@@ -16,6 +16,7 @@
 		75F6329B1CBF977E00CB8460 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F632991CBF977E00CB8460 /* LaunchScreen.storyboard */; };
 		75F632A61CBF977E00CB8460 /* QQDBManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F632A51CBF977E00CB8460 /* QQDBManagerTests.m */; };
 		75F632B11CBF977E00CB8460 /* QQDBManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F632B01CBF977E00CB8460 /* QQDBManagerUITests.m */; };
+		75F632DD1CBF9A8F00CB8460 /* DBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F632DC1CBF9A8F00CB8460 /* DBModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		75F632AC1CBF977E00CB8460 /* QQDBManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QQDBManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F632B01CBF977E00CB8460 /* QQDBManagerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQDBManagerUITests.m; sourceTree = "<group>"; };
 		75F632B21CBF977E00CB8460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75F632DB1CBF9A8F00CB8460 /* DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBModel.h; sourceTree = "<group>"; };
+		75F632DC1CBF9A8F00CB8460 /* DBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,7 @@
 		75F632871CBF977E00CB8460 /* QQDBManager */ = {
 			isa = PBXGroup;
 			children = (
+				75F632DA1CBF9A6F00CB8460 /* DBManeger */,
 				75F6328B1CBF977E00CB8460 /* AppDelegate.h */,
 				75F6328C1CBF977E00CB8460 /* AppDelegate.m */,
 				75F6328E1CBF977E00CB8460 /* ViewController.h */,
@@ -141,6 +145,15 @@
 				75F632B21CBF977E00CB8460 /* Info.plist */,
 			);
 			path = QQDBManagerUITests;
+			sourceTree = "<group>";
+		};
+		75F632DA1CBF9A6F00CB8460 /* DBManeger */ = {
+			isa = PBXGroup;
+			children = (
+				75F632DB1CBF9A8F00CB8460 /* DBModel.h */,
+				75F632DC1CBF9A8F00CB8460 /* DBModel.m */,
+			);
+			path = DBManeger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75F632901CBF977E00CB8460 /* ViewController.m in Sources */,
+				75F632DD1CBF9A8F00CB8460 /* DBModel.m in Sources */,
 				75F6328D1CBF977E00CB8460 /* AppDelegate.m in Sources */,
 				75F6328A1CBF977E00CB8460 /* main.m in Sources */,
 				75F632961CBF977E00CB8460 /* QQDBManager.xcdatamodeld in Sources */,
