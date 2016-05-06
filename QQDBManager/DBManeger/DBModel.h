@@ -8,11 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DBModel : NSObject
-
--(void)fetch;
--(void)insert;
--(void)update;
--(void)remove;
-
-@end
+#import "DBProperty.h"
+#import "NSObject+DBClass.h"
+#import "NSObject+DBPropertys.h"

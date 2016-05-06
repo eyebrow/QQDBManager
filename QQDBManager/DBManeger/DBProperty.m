@@ -1,4 +1,4 @@
-//
+
 //  QQDBProperty.m
 //  QQDBManager
 //
@@ -17,7 +17,7 @@
     if (propertyObj == nil) {
         propertyObj = [[self alloc] init];
         propertyObj.property = property;
-        objc_setAssociatedObject(self, property, propertyObj, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        objc_setAssociatedObject(self, property, propertyObj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return propertyObj;
 }
@@ -50,7 +50,7 @@
     if ([attributes hasPrefix:@"T@"]) {
         type = [attributes substringWithRange:NSMakeRange(3, [attributes rangeOfString:@","].location-4)];
     }
-    else if ([attributes hasPrefix:@"Ti"] || [attributes hasPrefix:@"Tq"]) {
+    else if ([attributes hasPrefix:@"Ti"] || [attributes hasPrefix:@"TQ"] || [attributes hasPrefix:@"Tq"]) {
         type = @"long long";
     }
     else if ([attributes hasPrefix:@"Tf"]) {
@@ -67,6 +67,9 @@
     }
     else if([attributes hasPrefix:@"Ts"]) {
         type = @"short";
+    }
+    else if([attributes hasPrefix:@"TB"] || [attributes hasPrefix:@"Tb"]) {
+        type = @"BOOL";
     }
     else {
         type = @"NSString";
@@ -94,7 +97,8 @@
         return DB_SQL_INTEGER;
     }
     else if ([type isEqualToString:@"float"] ||
-             [type isEqualToString:@"double"]) {
+             [type isEqualToString:@"double"] ||
+             [type isEqualToString:@"NSDate"]) {
         return DB_SQL_FLOAT;
     }
     else if ([type isEqualToString:@"long long"]) {
@@ -103,6 +107,17 @@
     else if ([type isEqualToString:@"NSData"] ||
              [type isEqualToString:@"UIImage"]) {
         return DB_SQL_BLOB;
+    }
+    else if ([type isEqualToString:@"NSArray"] ||
+             [type isEqualToString:@"NSMutableArray"] ||
+             [type isEqualToString:@"NSDictionary"] ||
+             [type isEqualToString:@"NSMutableDictionary"] ||
+             [type isEqualToString:@"NSSet"] ||
+             [type isEqualToString:@"NSMutableSet"]) {
+        return DB_SQL_BLOB;
+    }
+    else if([type isEqualToString:@"BOOL"]){
+        return DB_SQL_BOOLEAN;
     }
     
     return DB_SQL_TEXT;

@@ -8,31 +8,3 @@
 
 #import "DBModel.h"
 
-@implementation DBModel
-
--(void)fetch
-{
-    
-}
-
--(void)insert
-{
-    
-}
-
--(void)update
-{
-    
-}
-
--(void)remove
-{
-    
-}
-
-
-
-
-
-
-@end

@@ -12,11 +12,16 @@
 
 @interface PersonModel : NSObject
 
-@property (nonatomic, strong) DogModel *dog;
+//@property (nonatomic, strong) DogModel *dog;
 
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSMutableString *nsmutableString;
+@property (nonatomic, strong) NSAttributedString *nsAttributedString;
+@property (nonatomic, strong) NSMutableAttributedString *nsmutableAttributedString;
 @property (nonatomic, assign) NSInteger age;
+@property (nonatomic, assign) NSUInteger age2;
 @property (nonatomic, assign) BOOL sex;
-@property (nonatomic, strong) NSString *name1;
+@property (nonatomic, assign) bool sex2;
 @property (nonatomic, assign) float height;
 @property (nonatomic, strong) NSDate *birthDay;
 @property (nonatomic, strong) NSData *stuff;
@@ -27,10 +32,12 @@
 @property (nonatomic, strong) NSMutableArray *mutableArray;
 
 @property (nonatomic, strong) NSDictionary *nsdictionary;
+@property (nonatomic, strong) NSMutableDictionary *nsmutabledictionary;
 @property (nonatomic, strong) NSSet *nsset;
+@property (nonatomic, strong) NSMutableSet *nsmutableset;
 
-@property (nonatomic, strong) NSString *key;
-@property (nonatomic, strong) NSString *value;
+//@property (nonatomic, strong) NSString *key;
+//@property (nonatomic, strong) NSString *value;
 
 
 @end
