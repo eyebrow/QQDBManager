@@ -87,7 +87,8 @@
  */
 - (NSString *)convertToDBType:(NSString *)type
 {
-    if ([type isEqualToString:@"NSString"]) {
+    if ([type isEqualToString:@"NSString"] ||
+        [type isEqualToString:@"NSMutableString"]) {
         return DB_SQL_TEXT;
     }
     else if ([type isEqualToString:@"char"] ||
