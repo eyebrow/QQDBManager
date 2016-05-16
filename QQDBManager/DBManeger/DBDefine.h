@@ -22,4 +22,8 @@
 #define DB_SQL_NULL @"NULL"
 #define DB_SQL_INTEGER_PRIMARY_KEY @"INTEGER PRIMARY KEY"
 
+typedef void(^DBResults)(NSArray *results);
+typedef void(^DBSuccess)(BOOL isSuccess);
+typedef void(^DBCount)(int count);
+
 #endif /* QQDBDefine_h */

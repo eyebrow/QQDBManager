@@ -11,7 +11,7 @@
 #import "QQFileHandler.h"
 /** system */
 #import <objc/runtime.h>
-#import "NSObject+DBMethods.h"
+#import "NSObject+DBCreate.h"
 #import "DBDatabaseQueue.h"
 
 @implementation NSObject (DBProtocol)
@@ -32,6 +32,25 @@
 {
     return nil;
 }
+
+/** 设定主键*/
++ (NSString *)DBprimaryKey
+{
+    return nil;
+}
+
+/** 是否被其他model 链接 */
++ (BOOL)DBNeedBeLinked
+{
+    return NO;
+}
+
+/** 被其他库链接的属性(默认) */
++(NSDictionary *)DBBeLinkedProperties
+{
+    return nil;
+}
+
 #pragma mark - Property
 
 static char *kDbQueueKey;

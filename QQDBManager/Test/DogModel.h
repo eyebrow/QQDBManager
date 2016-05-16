@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface DogModel : NSObject
+@property (nonatomic, assign) NSInteger number;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *dna;
 @property (nonatomic, assign) NSInteger age;

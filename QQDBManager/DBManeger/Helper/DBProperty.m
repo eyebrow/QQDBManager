@@ -88,7 +88,8 @@
 - (NSString *)convertToDBType:(NSString *)type
 {
     if ([type isEqualToString:@"NSString"] ||
-        [type isEqualToString:@"NSMutableString"]) {
+        [type isEqualToString:@"NSMutableString"]  ||
+        [type isEqualToString:@"NSDate"]) {
         return DB_SQL_TEXT;
     }
     else if ([type isEqualToString:@"char"] ||
@@ -98,8 +99,7 @@
         return DB_SQL_INTEGER;
     }
     else if ([type isEqualToString:@"float"] ||
-             [type isEqualToString:@"double"] ||
-             [type isEqualToString:@"NSDate"]) {
+             [type isEqualToString:@"double"]){
         return DB_SQL_FLOAT;
     }
     else if ([type isEqualToString:@"long long"]) {

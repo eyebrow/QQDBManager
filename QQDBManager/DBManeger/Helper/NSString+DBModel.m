@@ -6,9 +6,9 @@
 //  Copyright © 2016年 com.tencent.prince. All rights reserved.
 //
 
-#import "NSString+DB.h"
+#import "NSString+DBModel.h"
 
-@implementation NSString (DB)
+@implementation NSString (DBModel)
 
 - (BOOL)isEmptyWithTrim
 {

@@ -20,4 +20,6 @@
 /** 数据库的rowid */
 @property (nonatomic, assign) sqlite_int64 rowid;
 
++ (void)valueForFileName:(id)value;
+
 @end

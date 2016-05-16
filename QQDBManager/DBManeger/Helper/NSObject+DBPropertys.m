@@ -15,6 +15,23 @@ static const char DBCachedPropertiesKey = '\0';
 
 @implementation NSObject (DBPropertys)
 
+#pragma mark - Property
+
+/** 加载Property数组 */
++ (void)loadProtypes
+{
+    self.propertys = [self properties];
+}
+
+static char *kDBPropertysKey;
++ (void)setPropertys:(NSMutableArray *)propertys {
+    objc_setAssociatedObject(self, &kDBPropertysKey, propertys, OBJC_ASSOCIATION_RETAIN);
+}
+
++ (NSMutableArray *)propertys {
+    return objc_getAssociatedObject(self, &kDBPropertysKey);
+}
+
 #pragma mark - Public Methods
 /**
  *  遍历所有的成员

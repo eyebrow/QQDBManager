@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSObject (DBMethods)
+@interface NSObject (DBCreate)
 
 + (void)DBInit;
+
 
 @end

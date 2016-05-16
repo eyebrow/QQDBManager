@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (DB)
+@interface NSString (DBModel)
 
 /**
  *  判断字符串是否为空

@@ -19,7 +19,17 @@
 /** 返回数据库路径 */
 + (NSString *)DBdatabasePath;
 
+/** 不需要入库的字段*/
 + (NSArray *)DBIgnoredProperties;
+
+/** 设定主键,返回属性名组成的NSString*/
++ (NSString *)DBprimaryKey;
+
+/** 是否被其他model 链接 */
++ (BOOL)DBNeedBeLinked;
+
+/** 被其他model链接的属性*/
++ (NSDictionary *)DBBeLinkedProperties;
 
 @end
 

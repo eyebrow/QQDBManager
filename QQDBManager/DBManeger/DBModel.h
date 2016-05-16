@@ -11,3 +11,9 @@
 #import "DBProperty.h"
 #import "NSObject+DBClass.h"
 #import "NSObject+DBPropertys.h"
+#import "NSObject+DBCreate.h"
+
+//model实现的协议
+#import "NSObject+DBProtocol.h"
+
+#import "NSObject+DBInsert.h"

@@ -7,8 +7,14 @@
 //
 
 #import "PersonModel.h"
+#import "DBModel.h"
 
 @implementation PersonModel
+
++(const NSString *)DBtableName
+{
+    return @"PersonTable";
+}
 
 - (instancetype)init
 {
@@ -18,4 +24,5 @@
     }
     return self;
 }
+
 @end

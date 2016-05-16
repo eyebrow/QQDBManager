@@ -20,15 +20,18 @@ typedef void(^DBPropertysEnumeration)(DBProperty *property, BOOL *stop);
 
 @interface NSObject (DBPropertys)
 
++ (NSMutableArray *)propertys;
 /**
  *  遍历所有的成员
  */
 + (void)enumerateProperties:(DBPropertysEnumeration)enumeration;
 
 /**
- *  成员变量转换成JJFMDBProperty数组
+ *  成员变量转换成DBProperty数组
  */
 + (NSMutableArray *)properties;
 
+/** 加载Property数组 */
++ (void)loadProtypes;
 
 @end

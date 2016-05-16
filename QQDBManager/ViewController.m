@@ -11,6 +11,8 @@
 #import "PersonModel.h"
 #import "DBManeger/DBModel.h"
 
+#import "DogModel.h"
+
 @interface ViewController ()
 
 @end
@@ -38,13 +40,40 @@
     model.height = 180;
     model.birthDay = [NSDate date];
     NSString *str = @"王子的奋斗奋斗的风格";
-    model.stuff = [NSData dataWithBytes:str.UTF8String length:4];
-    model.faceImg = nil;
-    model.skinColor = [UIColor blueColor];
+    model.stuff = [NSData dataWithBytes:str.UTF8String length:str.length];
+//    model.faceImg = nil;
+//    model.skinColor = [UIColor blueColor];
     
-    NSMutableArray *list = [model.class properties];
+    //NSMutableArray *list = [model.class properties];
+    
+//    [model insertToDB:^(BOOL isSuccess) {
+//        
+//        if (isSuccess) {
+//            NSLog(@"insertToDB isSuccess");
+//        }
+//        else {
+//            NSLog(@"insertToDB failed");
+//        }
+//        
+//    }];
     
     NSLog(@".....");
+    
+    DogModel *dog = [DogModel new];
+    dog.number = 2;
+    dog.name = @"dog2";
+    dog.age = 111;
+    
+    [dog insertToDB:^(BOOL isSuccess) {
+       
+        if (isSuccess) {
+            NSLog(@"insertToDB isSuccess");
+        }
+        else {
+            NSLog(@"insertToDB failed");
+        }
+        
+    }];
     
 //    unsigned int outCount;
 //    objc_property_t *propList = class_copyPropertyList([PersonModel class], &outCount);

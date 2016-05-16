@@ -7,7 +7,28 @@
 //
 
 #import "DogModel.h"
+#import "DBModel.h"
 
 @implementation DogModel
+
++(const NSString *)DBtableName
+{
+    return @"DogTable";
+}
+
++(NSString *)DBprimaryKey
+{
+    return @"number";
+}
+
++(BOOL)DBNeedBeLinked
+{
+    return YES;
+}
+
++(NSDictionary *)DBBeLinkedProperties
+{
+    return nil;
+}
 
 @end
