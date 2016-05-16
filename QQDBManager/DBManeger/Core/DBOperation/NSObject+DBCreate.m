@@ -28,7 +28,7 @@
     [self loadProtypes];
     [self createTable];
     
-    [self addTableColomns];
+    [self addColomnsIfNoExist];
 }
 
 #pragma mark - Table
@@ -46,7 +46,8 @@
     }];
 }
 
-+ (void)addTableColomns
+/** 添加数据库表中不存在的列*/
++ (void)addColomnsIfNoExist
 {
     [self.dbQueue inDatabaseAsync:^(FMDatabase *db){
        
@@ -54,17 +55,17 @@
             DBProperty *property = [self.propertys objectAtIndex:i];
             
             if ([db columnExists:property.name inTableWithName:[self DBtableName]] == NO) {
+                
+                NSLog(@"NO ColumnExists： %@ ",property.name);
+                
                 if ([self addColumn:property.name toTable:[self DBtableName] withType:property.dbType inDatabase:db]) {
-                    NSLog(@"addColum %@ success",property.name);
+                    NSLog(@"addColum： %@ success",property.name);
                 }
                 else{
-                    NSLog(@"addColum %@ failed",property.name);
+                    NSLog(@"addColum： %@ failed",property.name);
                 }
-                
-                
             }
         }
-        
     }];
     
 }
