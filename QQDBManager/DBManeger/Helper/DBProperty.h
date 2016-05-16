@@ -23,6 +23,14 @@
 /** 转换成数据库的类型 例:@"TEXT" */
 @property (nonatomic, readonly) NSString *dbType;
 
+/** 是否是链接属性 */
+@property (nonatomic, readonly) BOOL link;
+
+/** 链接属性的类型 */
+@property (nonatomic, readonly) NSString *linkType;
+
+/** 链接属性的名字 */
+@property (nonatomic, readonly) NSString *linkName;
 #pragma mark - Public Methods
 
 /** 初始化 */

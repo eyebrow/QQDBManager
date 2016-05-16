@@ -27,6 +27,8 @@
 + (void)DBInit {
     [self loadProtypes];
     [self createTable];
+    
+    [self addTableColomns];
 }
 
 #pragma mark - Table
@@ -42,6 +44,50 @@
         NSString *createTableSQL = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,%@)",self.DBtableName,[self appendTableSQL]];
         [db executeUpdate:createTableSQL];
     }];
+}
+
++ (void)addTableColomns
+{
+    [self.dbQueue inDatabaseAsync:^(FMDatabase *db){
+       
+        for (int i=0; i<self.propertys.count; i++) {
+            DBProperty *property = [self.propertys objectAtIndex:i];
+            
+            if ([db columnExists:property.name inTableWithName:[self DBtableName]] == NO) {
+                if ([self addColumn:property.name toTable:[self DBtableName] withType:property.dbType inDatabase:db]) {
+                    NSLog(@"addColum %@ success",property.name);
+                }
+                else{
+                    NSLog(@"addColum %@ failed",property.name);
+                }
+                
+                
+            }
+        }
+        
+    }];
+    
+}
+
++ (BOOL)addColumn:(NSString*)columnName toTable:(NSString *)tableName withType:(NSString *)type inDatabase:(FMDatabase *)db
+{
+    return [self addColumn:columnName toTable:tableName withType:type defaultValue:nil inDatabase:db];
+}
+
++ (BOOL)addColumn:(NSString*)columnName toTable:(NSString*)tableName withType:(NSString*)type defaultValue:(NSString*)value inDatabase:(FMDatabase*)db
+{
+    if (!columnName || !tableName || !type || !db)
+        return NO;
+    
+    //    if (![db isTable:tableName hasColumn:columnName]) {
+    NSString* addColSql = [NSString stringWithFormat:@"alter table %@ add %@ %@ ",tableName,columnName,type];
+    
+    if (value.length > 0)
+        addColSql = [NSString stringWithFormat:@"%@ default %@",addColSql,value];
+    if (![db executeUpdate:addColSql]) {
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - Append SQL

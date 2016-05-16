@@ -170,8 +170,23 @@
     for (int i=0; i<self.propertys.count; i++) {
         DBProperty *property = [self.propertys objectAtIndex:i];
         
-        id value = [model valueForKey:property.name];
-        [self valueForFileName:value];
+        id value = nil;
+        
+        if (property.link) {
+            NSString *linkType = property.linkType;
+            NSString *linkName = property.linkName;
+            
+            if (linkType && linkName) {
+                id linkModel = [model valueForKey:property.linkName];
+                value = [linkModel valueForKey:[NSClassFromString(linkType) DBprimaryKey]];
+                
+                [self executeRelationShipTableInsertUpdate:linkModel];
+            }
+        }
+        else{
+            value = [model valueForKey:property.name];
+            [self valueForFileName:value];
+        }
         
         if (value) {
             [insertKey appendFormat:@"%@,", property.name];
@@ -181,7 +196,6 @@
         else{
             NSLog(@"value字段值为空...");
         }
-        
     }
     
     if (insertKey.length > 0) {
@@ -204,8 +218,25 @@
     for (int i=0; i<self.propertys.count; i++) {
         DBProperty *property = [self.propertys objectAtIndex:i];
         
-        id value = [model valueForKey:property.name];
-        [self valueForFileName:value];
+        id value = nil;
+        
+        if (property.link) {
+            
+            NSString *linkType = property.linkType;
+            NSString *linkName = property.linkName;
+            
+            if (linkType && linkName) {
+                id linkModel = [model valueForKey:property.linkName];
+                value = [linkModel valueForKey:[NSClassFromString(linkType) DBprimaryKey]];
+                
+                [self executeRelationShipTableInsertUpdate:linkModel];
+            }
+        }
+        else{
+            value = [model valueForKey:property.name];
+            [self valueForFileName:value];
+        }
+        
         
         if (value) {
             [setKey appendFormat:@"%@=?,", property.name];
@@ -217,6 +248,23 @@
     }
     if (setKey.length > 0) {
         [setKey deleteCharactersInRange:NSMakeRange(setKey.length - 1, 1)];
+    }
+}
+
++ (void) executeRelationShipTableInsertUpdate:(id)model
+{
+    if (model) {
+        
+        [model insertUpdateToDB:^(BOOL isSuccess) {
+            
+            if (isSuccess) {
+                NSLog(@"link Tale insertToDB isSuccess");
+            }
+            else {
+                NSLog(@"link Tale insertToDB failed");
+            }
+            
+        }];
     }
 }
 

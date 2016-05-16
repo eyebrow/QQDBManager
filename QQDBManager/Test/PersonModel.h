@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class DogModel;
 @interface PersonModel : NSObject
-
-//@property (nonatomic, strong) DogModel *dog;
+@property (nonatomic, assign) uint64_t uin;
+@property (nonatomic, strong) DogModel *myDog;
 
 @property (nonatomic, strong) NSString *name;
 //@property (nonatomic, strong) NSMutableString *nsmutableString;
@@ -24,6 +25,7 @@
 @property (nonatomic, assign) float height;
 @property (nonatomic, strong) NSDate *birthDay;
 @property (nonatomic, strong) NSData *stuff;
+
 //@property (nonatomic, strong) UIImage *faceImg;
 //@property (nonatomic, strong) UIColor *skinColor;
 

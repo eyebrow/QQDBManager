@@ -11,7 +11,7 @@
 
 @implementation DogModel
 
-+(const NSString *)DBtableName
++(NSString *)DBtableName
 {
     return @"DogTable";
 }

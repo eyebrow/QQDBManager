@@ -11,9 +11,14 @@
 
 @implementation PersonModel
 
-+(const NSString *)DBtableName
++(NSString *)DBtableName
 {
     return @"PersonTable";
+}
+
++(NSString *)DBprimaryKey
+{
+    return @"uin";
 }
 
 - (instancetype)init

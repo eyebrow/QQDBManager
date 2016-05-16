@@ -8,6 +8,7 @@
 
 #import "DBProperty.h"
 #import "DBDefine.h"
+#import "NSObject+DBProtocol.h"
 
 @implementation DBProperty
 
@@ -131,7 +132,45 @@
     _property = property;
     _name = @(property_getName(property));
     _orignType = [self convertToType:property];
+
+    if ([NSClassFromString(_orignType) DBNeedBeLinked]) {
+        objc_property_t property = [self.class getPrimeKeyProperty:_orignType];
+        
+        if (property) {
+             _link = YES;
+            _linkType = _orignType;
+            _linkName = _name;
+            
+            const char *cName = property_getName(property);
+            NSString *name = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
+            _name = [NSString stringWithFormat:@"%@_%@",_name,name];
+            _orignType = [self convertToType:property];
+        }
+    }
+    
     _dbType = [self convertToDBType:_orignType];
+}
+
+//返回当前类的所有属性
++ (objc_property_t)getPrimeKeyProperty:(NSString *)clsStr{
+    
+    // 获取当前类的所有属性
+    unsigned int count;// 记录属性个数
+    objc_property_t *properties = class_copyPropertyList(NSClassFromString(clsStr), &count);
+    // 遍历
+    for (int i = 0; i < count; i++) {
+        // objc_property_t 属性类型
+        objc_property_t property = properties[i];
+        // 获取属性的名称 C语言字符串
+        const char *cName = property_getName(property);
+        // 转换为Objective C 字符串
+        NSString *name = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
+        if ([name isEqualToString:[NSClassFromString(clsStr) DBprimaryKey]]) {
+            return property;
+        }
+    }
+    
+    return nil;
 }
 
 @end

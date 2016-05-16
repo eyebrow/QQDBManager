@@ -14,7 +14,7 @@
 @optional
 
 /** 返回表名 */
-+ (const NSString *)DBtableName;
++ (NSString *)DBtableName;
 
 /** 返回数据库路径 */
 + (NSString *)DBdatabasePath;
