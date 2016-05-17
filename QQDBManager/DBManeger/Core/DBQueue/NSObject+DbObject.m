@@ -13,6 +13,7 @@
 #import "NSString+DBModel.h"
 #import "QQFileHandler.h"
 #import "DBProperty.h"
+#import "NSObject+DBProtocol.h"
 
 @implementation NSObject (DbObject)
 
@@ -49,25 +50,9 @@ static char *kRowidKey;
  *  @param columeName   属性的Name
  *  @param columeType   属性的类型
  */
-+ (void)setValueWithModel:(id)model set:(FMResultSet *)set columeName:(NSString *)columeName columeType:(NSString *)columeType property:(DBProperty *)property{
++ (void)setValueWithModel:(id)model set:(FMResultSet *)set columeName:(NSString *)columeName columeType:(NSString *)columeType{
     
-    if (property.relationType == RelationType_link) {
-        
-//        NSString *linkType = property.linkType;
-//        NSString *linkName = property.linkName;
-//        
-//        if (linkType && linkName) {
-//            id linkModel = [model valueForKey:property.linkName];
-//            //value = [linkModel valueForKey:[NSClassFromString(linkType) DBprimaryKey]];
-//            
-//            [self executeRelationShipTableSearch:linkModel];
-//        }
-    }
-    else if(property.relationType == RelationType_expand){
-        
-    }
-    
-    else if ([columeType isEqualToString:@"NSString"]) {
+    if ([columeType isEqualToString:@"NSString"]) {
         [model setValue:[set stringForColumn:columeName] forKey:columeName];
     }
     else if ([columeType isEqualToString:@"int"] ||
@@ -138,11 +123,6 @@ static char *kRowidKey;
     {
         value = [NSDate stringWithDate:value];
     }
-}
-
-+ (void)executeRelationShipTableSearch:(id)model
-{
-    
 }
 
 @end

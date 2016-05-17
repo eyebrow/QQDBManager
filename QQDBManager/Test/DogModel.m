@@ -11,6 +11,19 @@
 
 @implementation DogModel
 
+-(id)copyWithZone:(NSZone *)zone
+{
+    DogModel *result = [[[self class] allocWithZone:zone] init];
+    
+    //result. = [self->_obj copy];
+    result.number = self.number;
+    result.name = self.name;
+    result.age = self.age;
+    result.dna = self.dna;
+    
+    return result;
+}
+
 +(NSString *)DBtableName
 {
     return @"DogTable";

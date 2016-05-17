@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @class DogModel;
-@interface PersonModel : NSObject
+@interface PersonModel : NSObject<NSCopying>
 @property (nonatomic, assign) uint64_t uin;
 @property (nonatomic, strong) DogModel *myDog;
 

@@ -34,15 +34,15 @@
 -(void)testInsert
 {
     
-    PersonModel *model = [PersonModel new];
-    model.uin = 2015885903;
-    model.name = @"prince";
-    model.age = 20;
-    model.sex = YES;
-    model.height = 180;
-    model.birthDay = [NSDate date];
-    NSString *str = @"王子的奋斗奋斗的风格";
-    model.stuff = [NSData dataWithBytes:str.UTF8String length:str.length];
+//    PersonModel *model = [PersonModel new];
+//    model.uin = arc4random() % 1000;
+//    model.name = @"prince";
+//    model.age = 20;
+//    model.sex = YES;
+//    model.height = 180;
+//    model.birthDay = [NSDate date];
+//    NSString *str = @"王子的奋斗奋斗的风格";
+//    model.stuff = [NSData dataWithBytes:str.UTF8String length:str.length];
 //    model.faceImg = nil;
 //    model.skinColor = [UIColor blueColor];
     
@@ -61,18 +61,27 @@
     
     NSLog(@".....");
     
+    PersonModel *model = [PersonModel new];
+    model.uin = arc4random() % 1000;
+    model.name = @"prince";
+    model.age = 20;
+    model.sex = YES;
+    model.height = 180;
+    model.birthDay = [NSDate date];
+    NSString *str = @"王子的奋斗奋斗的风格";
+    model.stuff = [NSData dataWithBytes:str.UTF8String length:str.length];
     
     for (int i = 0; i < 20; i++) {
         
         DogModel *dog = [DogModel new];
-        dog.number = arc4random() % 100;;
+        dog.number = arc4random() % 100;
         dog.name = @"dog2";
         dog.age = 111;
         
         model.myDog = dog;
         
-        [model insertToDB:^(BOOL isSuccess) {
-            
+        [[model copy] insertToDB:^(BOOL isSuccess) {
+
             if (isSuccess) {
                 NSLog(@"insertToDB isSuccess");
             }

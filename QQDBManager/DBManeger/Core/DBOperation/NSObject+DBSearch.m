@@ -22,6 +22,10 @@
     [self searchWhere:nil orderBy:nil offset:0 count:0 results:block];
 }
 
++ (void)searchAllWhere:(NSString *)where results:(DBResults)block {
+    [self searchWhere:where orderBy:nil offset:0 count:0 results:block];
+}
+
 + (void)searchWhere:(NSString *)where orderBy:(NSString *)orderBy offset:(int)offset count:(int)count results:(DBResults)block
 {
     [self.dbQueue inDatabaseAsync:^(FMDatabase *db) {
@@ -49,7 +53,21 @@
         for (int i=0; i<self.propertys.count; i++) {
             DBProperty *property = [self.propertys objectAtIndex:i];
             
-            [self setValueWithModel:model set:set columeName:property.name columeType:property.orignType property:property];
+            if (property.relationType == RelationType_link) {
+                id relationClass = NSClassFromString(property.orignType);
+                NSString *primeKey = [relationClass DBprimaryKey];
+                id relationModel = [model valueForKey:property.name];
+                [self setValueWithModel:relationModel set:set columeName:primeKey columeType:property.orignType];//先设置主键的值
+                
+                [self executeRelationShipTableSearch:relationModel];
+            }
+            else if (property.relationType == RelationType_expand){
+                
+            }
+            else{
+               [self setValueWithModel:model set:set columeName:property.name columeType:property.orignType];
+            }
+            
         }
         [array addObject:model];
     }
@@ -58,6 +76,14 @@
     if (block) {
         block(array);
     }
+}
+
++ (void)executeRelationShipTableSearch:(NSObject *)model
+{
+    NSString *where = [NSString stringWithFormat:@"%@='%@'", [model.class DBprimaryKey],[model valueForKey:[model.class DBprimaryKey]]];
+    [model.class searchAllWhere:where results:^(NSArray *results) {
+        
+    }];
 }
 
 /**

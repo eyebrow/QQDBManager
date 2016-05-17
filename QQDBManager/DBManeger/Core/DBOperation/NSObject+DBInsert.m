@@ -37,6 +37,7 @@
 
 - (void)insertUpdateToDB:(DBSuccess)block {
     
+    self.primaryKey = [self.class DBprimaryKey];
     [self.class.dbQueue inDatabaseAsync:^(FMDatabase *db) {
         BOOL isExists = [self executeIsExistsToDB:db result:nil];
         if (isExists) {
@@ -131,7 +132,7 @@
         return NO;
     }
     
-    NSString *where = [NSString stringWithFormat:@"%@='%@'", self.primaryKey,[self valueForKey:self.primaryKey]];
+    NSString *where = [NSString stringWithFormat:@"%@='%@'", [self.class DBprimaryKey],[self valueForKey:[self.class DBprimaryKey]]];
     
     BOOL isExists = [self executeIsExistsToDB:where db:db result:block];
     
@@ -184,7 +185,7 @@
             
             NSString *name = [NSString stringWithFormat:@"%@%@",property.name,primeKey];
             
-            if (value) {
+            if (name && value) {
                 [insertKey appendFormat:@"%@,", name];
                 [insertValuesStr appendString:@"?,"];
                 [insertValues addObject:value];
@@ -260,16 +261,18 @@
             if (relationModel) {
                 
                 value = [relationModel valueForKey:primeKey];
-                
-                NSString *name = [NSString stringWithFormat:@"%@%@",property.name,primeKey];
-                
-                if (name && value) {
-                    [setKey appendFormat:@"%@=?,", name];
-                    [setValues addObject:value];
-                }
-                else{
-                    NSLog(@"value字段值为空...");
-                }
+                [self executeRelationShipTableInsertUpdate:relationModel];
+            }
+            
+            
+            NSString *name = [NSString stringWithFormat:@"%@%@",property.name,primeKey];
+            
+            if (name && value) {
+                [setKey appendFormat:@"%@=?,", name];
+                [setValues addObject:value];
+            }
+            else{
+                NSLog(@"value字段值为空...");
             }
         }
         else if (property.relationType == RelationType_expand){
@@ -308,10 +311,10 @@
         [model insertUpdateToDB:^(BOOL isSuccess) {
             
             if (isSuccess) {
-                NSLog(@"link Tale insertToDB isSuccess");
+                NSLog(@"link relation Tale insertToDB isSuccess");
             }
             else {
-                NSLog(@"link Tale insertToDB failed");
+                NSLog(@"link relation Tale insertToDB failed");
             }
             
         }];

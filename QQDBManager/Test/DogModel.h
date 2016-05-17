@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DogModel : NSObject
+@interface DogModel : NSObject<NSCopying>
 @property (nonatomic, assign) NSInteger number;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *dna;
