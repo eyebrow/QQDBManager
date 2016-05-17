@@ -12,6 +12,7 @@
 #import "NSDate+DBModel.h"
 #import "NSString+DBModel.h"
 #import "QQFileHandler.h"
+#import "DBProperty.h"
 
 @implementation NSObject (DbObject)
 
@@ -36,6 +37,76 @@ static char *kRowidKey;
     NSNumber *rowidNum = objc_getAssociatedObject(self, &kRowidKey);
     sqlite_int64 rowid = rowidNum.longLongValue;
     return rowid;
+}
+
+#pragma mark - Methods
+
+/**
+ *  根据bindingModel的类型,把数据库的值转换过来
+ *
+ *  @param bindingModel 继承DBModel
+ *  @param set          FMResultSet
+ *  @param columeName   属性的Name
+ *  @param columeType   属性的类型
+ */
++ (void)setValueWithModel:(id)model set:(FMResultSet *)set columeName:(NSString *)columeName columeType:(NSString *)columeType property:(DBProperty *)property{
+    
+    if (property.relationType == RelationType_link) {
+        
+//        NSString *linkType = property.linkType;
+//        NSString *linkName = property.linkName;
+//        
+//        if (linkType && linkName) {
+//            id linkModel = [model valueForKey:property.linkName];
+//            //value = [linkModel valueForKey:[NSClassFromString(linkType) DBprimaryKey]];
+//            
+//            [self executeRelationShipTableSearch:linkModel];
+//        }
+    }
+    else if(property.relationType == RelationType_expand){
+        
+    }
+    
+    else if ([columeType isEqualToString:@"NSString"]) {
+        [model setValue:[set stringForColumn:columeName] forKey:columeName];
+    }
+    else if ([columeType isEqualToString:@"int"] ||
+             [columeType isEqualToString:@"long"] ||
+             [columeType isEqualToString:@"long long"]) {
+        [model setValue:[NSNumber numberWithLongLong:[set longLongIntForColumn:columeName]] forKey:columeName];
+    }
+    else if ([columeType isEqualToString:@"BOOL"] ||
+             [columeType isEqualToString:@"bool"]) {
+        [model setValue:[NSNumber numberWithBool:[set boolForColumn:columeName]] forKey:columeName];
+    }
+    else if ([columeType isEqualToString:@"char"]) {
+        [model setValue:[NSNumber numberWithInt:[set intForColumn:columeName]] forKey:columeName];
+    }
+    else if ([columeType isEqualToString:@"float"] ||
+             [columeType isEqualToString:@"double"]) {
+        [model setValue:[NSNumber numberWithDouble:[set doubleForColumn:columeName]] forKey:columeName];
+    }
+    else if ([columeType isEqualToString:@"NSNumber"]) {
+        [model setValue:[NSNumber numberWithLongLong:[set stringForColumn:columeName].longLongValue] forKey:columeName];
+    }
+    else if ([columeType isEqualToString:@"UIImage"]) {
+        NSString* filename = [set stringForColumn:columeName];
+        if ([QQFileHandler isFileExists:[QQFileHandler getPathForDocuments:filename inDir:@"dbImages"]]) {
+            UIImage *img = [UIImage imageWithContentsOfFile:[QQFileHandler getPathForDocuments:filename inDir:@"dbImages"]];
+            [model setValue:img forKey:columeName];
+        }
+    }
+    else if ([columeType isEqualToString:@"NSDate"]) {
+        NSString* datestr = [set stringForColumn:columeName];
+        [model setValue:[NSDate dateWithString:datestr] forKey:columeName];
+    }
+    else if ([columeType isEqualToString:@"NSData"]) {
+        NSString *filename = [set stringForColumn:columeName];
+        if ([QQFileHandler isFileExists:[QQFileHandler getPathForDocuments:filename inDir:@"dbData"]]) {
+            NSData* data = [NSData dataWithContentsOfFile:[QQFileHandler getPathForDocuments:filename inDir:@"dbData"]];
+            [model setValue:data forKey:columeName];
+        }
+    }
 }
 
 /**
@@ -67,6 +138,11 @@ static char *kRowidKey;
     {
         value = [NSDate stringWithDate:value];
     }
+}
+
++ (void)executeRelationShipTableSearch:(id)model
+{
+    
 }
 
 @end

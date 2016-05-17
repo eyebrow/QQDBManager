@@ -100,10 +100,65 @@
 + (NSString *)appendTableSQL {
     NSMutableString *tableSQL = [NSMutableString string];
     for (int i=0; i<self.propertys.count; i++) {
+        
+        NSString *name = nil;
+        NSString *dbType = nil;
+        
         DBProperty *property = [self.propertys objectAtIndex:i];
-        [tableSQL appendFormat:@"%@ %@", property.name, property.dbType];
-        if (self.propertys.count != i+1) {
-            [tableSQL appendString:@","];
+        
+        if (property.relationType == RelationType_link) {
+            id relationClass = NSClassFromString(property.orignType);
+             NSString *primeKey = [relationClass DBprimaryKey];
+            
+            DBProperty *relationProperty = nil;
+            if (primeKey) {
+                for (relationProperty in property.relationProperty) {
+                    if ([primeKey isEqualToString:relationProperty.name]) {
+                        break;
+                    }
+                }
+            }
+            
+            if (relationProperty) {
+                name = [NSString stringWithFormat:@"%@%@",property.name,primeKey];
+                dbType = relationProperty.dbType;
+            }
+            
+            if (name && dbType) {
+                [tableSQL appendFormat:@"%@ %@", name, dbType];
+            }
+            
+            if (self.propertys.count != i+1) {
+                [tableSQL appendString:@","];
+            }
+        }
+        else if (property.relationType == RelationType_expand){
+            
+            for (DBProperty *relationProperty in property.relationProperty) {
+                name = [NSString stringWithFormat:@"%@%@",property.name,relationProperty.name];
+                dbType = relationProperty.dbType;
+                
+                if (name && dbType) {
+                    [tableSQL appendFormat:@"%@ %@", name, dbType];
+                }
+                
+                if (self.propertys.count != i+1) {
+                    [tableSQL appendString:@","];
+                }
+            }
+            
+        }
+        else{
+            name = property.name;
+            dbType = property.dbType;
+            
+            if (name && dbType) {
+                [tableSQL appendFormat:@"%@ %@", name, dbType];
+            }
+            
+            if (self.propertys.count != i+1) {
+                [tableSQL appendString:@","];
+            }
         }
     }
     return tableSQL;

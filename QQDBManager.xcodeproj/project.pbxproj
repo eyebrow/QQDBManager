@@ -14,6 +14,7 @@
 		7525D5271CE31DB9002F8153 /* NSObject+DBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7525D5231CE31DB9002F8153 /* NSObject+DBClass.m */; };
 		7525D5281CE31DB9002F8153 /* NSObject+DBPropertys.m in Sources */ = {isa = PBXBuildFile; fileRef = 7525D5251CE31DB9002F8153 /* NSObject+DBPropertys.m */; };
 		7525D52B1CE31DF2002F8153 /* DBProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 7525D52A1CE31DF2002F8153 /* DBProperty.m */; };
+		754D40541CEB1F56005C7136 /* NSObject+DBSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 754D40531CEB1F56005C7136 /* NSObject+DBSearch.m */; };
 		75728EC71CE5B93D006D60FF /* NSString+DBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75728EC61CE5B93D006D60FF /* NSString+DBModel.m */; };
 		75744E4F1CE9752700D76B91 /* NSDate+DBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E4E1CE9752700D76B91 /* NSDate+DBModel.m */; };
 		75744E5F1CE9C17700D76B91 /* NSObject+DBCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E551CE9C17700D76B91 /* NSObject+DBCreate.m */; };
@@ -68,6 +69,8 @@
 		7525D5251CE31DB9002F8153 /* NSObject+DBPropertys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBPropertys.m"; sourceTree = "<group>"; };
 		7525D5291CE31DF2002F8153 /* DBProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBProperty.h; sourceTree = "<group>"; };
 		7525D52A1CE31DF2002F8153 /* DBProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBProperty.m; sourceTree = "<group>"; };
+		754D40521CEB1F56005C7136 /* NSObject+DBSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBSearch.h"; sourceTree = "<group>"; };
+		754D40531CEB1F56005C7136 /* NSObject+DBSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBSearch.m"; sourceTree = "<group>"; };
 		75728EC51CE5B93D006D60FF /* NSString+DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DBModel.h"; sourceTree = "<group>"; };
 		75728EC61CE5B93D006D60FF /* NSString+DBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DBModel.m"; sourceTree = "<group>"; };
 		75744E4D1CE9752700D76B91 /* NSDate+DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DBModel.h"; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 				75744E571CE9C17700D76B91 /* NSObject+DBInsert.m */,
 				75744E581CE9C17700D76B91 /* NSObject+DBProtocol.h */,
 				75744E591CE9C17700D76B91 /* NSObject+DBProtocol.m */,
+				754D40521CEB1F56005C7136 /* NSObject+DBSearch.h */,
+				754D40531CEB1F56005C7136 /* NSObject+DBSearch.m */,
 			);
 			path = DBOperation;
 			sourceTree = "<group>";
@@ -488,6 +493,7 @@
 				751A53CB1CDC45250074B592 /* QQFileHandler.m in Sources */,
 				75744E611CE9C17700D76B91 /* NSObject+DBProtocol.m in Sources */,
 				75F6328D1CBF977E00CB8460 /* AppDelegate.m in Sources */,
+				754D40541CEB1F56005C7136 /* NSObject+DBSearch.m in Sources */,
 				75F6328A1CBF977E00CB8460 /* main.m in Sources */,
 				75F632961CBF977E00CB8460 /* QQDBManager.xcdatamodeld in Sources */,
 				75744E621CE9C17700D76B91 /* DBDatabaseQueue.m in Sources */,

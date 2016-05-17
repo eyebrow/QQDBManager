@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import <FMDB/FMDB.h>
+
+@class DBProperty;
 
 @interface NSObject (DbObject)
 
@@ -19,6 +22,8 @@
 
 /** 数据库的rowid */
 @property (nonatomic, assign) sqlite_int64 rowid;
+
++ (void)setValueWithModel:(id)model set:(FMResultSet *)set columeName:(NSString *)columeName columeType:(NSString *)columeType property:(DBProperty *)property;
 
 + (void)valueForFileName:(id)value;
 

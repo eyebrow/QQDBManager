@@ -76,22 +76,6 @@ static char *kDBPropertysKey;
                     continue;
                 }
                 
-                if ([property.dbType isEqualToString:DB_SQL_EXPAND]) {
-                    
-                    [NSClassFromString(property.orignType) loadProtypes];
-                    
-                    for (DBProperty *expandProperty in NSClassFromString(property.orignType).propertys){
-                        expandProperty.expand = YES;
-                        expandProperty.expandType = property.orignType;
-                        expandProperty.expandName = property.name;
-                        expandProperty.name = [NSString stringWithFormat:@"%@%@",property.name,expandProperty.name];
-                        
-                        [cachedProperties addObject:expandProperty];
-                    }
-                    
-                    continue;
-                }
-                
                 [cachedProperties addObject:property];
             }
             

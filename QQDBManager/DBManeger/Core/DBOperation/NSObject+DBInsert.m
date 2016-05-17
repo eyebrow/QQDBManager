@@ -172,45 +172,60 @@
         
         id value = nil;
         
-        if (property.link) {
-            NSString *linkType = property.linkType;
-            NSString *linkName = property.linkName;
+        if (property.relationType == RelationType_link) {
+            id relationClass = NSClassFromString(property.orignType);
+            NSString *primeKey = [relationClass DBprimaryKey];
+            id relationModel = [model valueForKey:property.name];
             
-            if (linkType && linkName) {
-                id linkModel = [model valueForKey:property.linkName];
-                value = [linkModel valueForKey:[NSClassFromString(linkType) DBprimaryKey]];
-                
-                [self executeRelationShipTableInsertUpdate:linkModel];
+            if (relationModel) {
+                value = [relationModel valueForKey:primeKey];
+                [self executeRelationShipTableInsertUpdate:relationModel];
+            }
+            
+            NSString *name = [NSString stringWithFormat:@"%@%@",property.name,primeKey];
+            
+            if (value) {
+                [insertKey appendFormat:@"%@,", name];
+                [insertValuesStr appendString:@"?,"];
+                [insertValues addObject:value];
+            }
+            else{
+                NSLog(@"value字段值为空...");
             }
         }
-        else if (property.expand){
-            NSString *expandType = property.expandType;
-            NSString *expandName = property.expandName;
+        else if (property.relationType == RelationType_expand){
             
-            if (expandType && expandName) {
-                id expandModel = [model valueForKey:property.expandName];
-                NSString *name = [property.name substringFromIndex:expandName.length];
+            for (DBProperty *relationProperty in property.relationProperty) {
+                NSString *name = [NSString stringWithFormat:@"%@%@",property.name,relationProperty.name];
+                id relationModel = [model valueForKey:property.name];
                 
-                if (name) {
-                    value = [expandModel valueForKey:name];
+                if (relationModel) {
+                    value = [relationModel valueForKey:relationProperty.name];
+                    
+                    if (value) {
+                        [insertKey appendFormat:@"%@,", name];
+                        [insertValuesStr appendString:@"?,"];
+                        [insertValues addObject:value];
+                    }
+                    else{
+                        NSLog(@"value字段值为空...");
+                    }
                 }
-                else{
-                    value = @"";
-                }
+                
             }
         }
         else{
             value = [model valueForKey:property.name];
             [self valueForFileName:value];
-        }
-        
-        if (value) {
-            [insertKey appendFormat:@"%@,", property.name];
-            [insertValuesStr appendString:@"?,"];
-            [insertValues addObject:value];
-        }
-        else{
-            NSLog(@"value字段值为空...");
+            
+            if (value) {
+                [insertKey appendFormat:@"%@,", property.name];
+                [insertValuesStr appendString:@"?,"];
+                [insertValues addObject:value];
+            }
+            else{
+                NSLog(@"value字段值为空...");
+            }
         }
     }
     
@@ -236,46 +251,49 @@
         
         id value = nil;
         
-        if (property.link) {
+        if (property.relationType == RelationType_link) {
             
-            NSString *linkType = property.linkType;
-            NSString *linkName = property.linkName;
+            id relationClass = NSClassFromString(property.orignType);
+            NSString *primeKey = [relationClass DBprimaryKey];
+            id relationModel = [model valueForKey:property.name];
             
-            if (linkType && linkName) {
-                id linkModel = [model valueForKey:property.linkName];
-                value = [linkModel valueForKey:[NSClassFromString(linkType) DBprimaryKey]];
+            if (relationModel) {
                 
-                [self executeRelationShipTableInsertUpdate:linkModel];
-            }
-        }
-        else if (property.expand){
-            NSString *expandType = property.expandType;
-            NSString *expandName = property.expandName;
-            
-            if (expandType && expandName) {
-                id expandModel = [model valueForKey:property.expandName];
-                NSString *name = [property.name substringFromIndex:expandName.length];
+                value = [relationModel valueForKey:primeKey];
                 
-                if (name) {
-                   value = [expandModel valueForKey:name];
+                NSString *name = [NSString stringWithFormat:@"%@%@",property.name,primeKey];
+                
+                if (name && value) {
+                    [setKey appendFormat:@"%@=?,", name];
+                    [setValues addObject:value];
                 }
                 else{
-                    value = @"";
+                    NSLog(@"value字段值为空...");
+                }
+            }
+        }
+        else if (property.relationType == RelationType_expand){
+            
+            for (DBProperty *relationProperty in property.relationProperty) {
+                NSString *name = [NSString stringWithFormat:@"%@%@",property.name,relationProperty.name];
+                id relationModel = [model valueForKey:property.name];
+                
+                if (relationModel) {
+                    value = [relationModel valueForKey:relationProperty.name];
+                    
+                    if (name && value) {
+                        [setKey appendFormat:@"%@=?,", name];
+                        [setValues addObject:value];
+                    }
+                    else{
+                        NSLog(@"value字段值为空...");
+                    }
                 }
             }
         }
         else{
             value = [model valueForKey:property.name];
             [self valueForFileName:value];
-        }
-        
-        
-        if (value) {
-            [setKey appendFormat:@"%@=?,", property.name];
-            [setValues addObject:value];
-        }
-        else{
-            NSLog(@"value字段值为空...");
         }
     }
     if (setKey.length > 0) {

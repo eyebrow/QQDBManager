@@ -17,3 +17,4 @@
 #import "NSObject+DBProtocol.h"
 
 #import "NSObject+DBInsert.h"
+#import "NSObject+DBSearch.h"

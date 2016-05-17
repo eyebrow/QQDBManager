@@ -16,10 +16,10 @@
     return @"PersonTable";
 }
 
-+(NSString *)DBprimaryKey
-{
-    return @"uin";
-}
+//+(NSString *)DBprimaryKey
+//{
+//    return @"uin";
+//}
 
 - (instancetype)init
 {

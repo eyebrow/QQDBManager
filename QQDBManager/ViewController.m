@@ -22,7 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self testCode];
+    [self testInsert];
+    //[self testSearch];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,7 +31,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)testCode
+-(void)testInsert
 {
     
     PersonModel *model = [PersonModel new];
@@ -60,23 +61,28 @@
     
     NSLog(@".....");
     
-    DogModel *dog = [DogModel new];
-    dog.number = arc4random() % 100;;
-    dog.name = @"dog2";
-    dog.age = 111;
     
-    model.myDog = dog;
+    for (int i = 0; i < 20; i++) {
+        
+        DogModel *dog = [DogModel new];
+        dog.number = arc4random() % 100;;
+        dog.name = @"dog2";
+        dog.age = 111;
+        
+        model.myDog = dog;
+        
+        [model insertToDB:^(BOOL isSuccess) {
+            
+            if (isSuccess) {
+                NSLog(@"insertToDB isSuccess");
+            }
+            else {
+                NSLog(@"insertToDB failed");
+            }
+            
+        }];
+    }
     
-    [model insertToDB:^(BOOL isSuccess) {
-        
-        if (isSuccess) {
-            NSLog(@"insertToDB isSuccess");
-        }
-        else {
-            NSLog(@"insertToDB failed");
-        }
-        
-    }];
     
 //    [dog insertToDB:^(BOOL isSuccess) {
 //       
@@ -90,6 +96,18 @@
 //    }];
     
 
+}
+
+-(void)testSearch
+{
+    [PersonModel searchAll:^(NSArray *results) {
+        
+        NSArray *tmpArry = [results copy];
+        
+        for (PersonModel *model in tmpArry) {
+            NSLog(@"model...");
+        }
+    }];
 }
 
 @end

@@ -140,21 +140,16 @@
     
     if ([_dbType isEqualToString:DB_SQL_EXPAND]) {
         
+        
+        [NSClassFromString(_orignType) loadProtypes];
+        _relationProperty = NSClassFromString(_orignType).propertys;
+        
         if ([NSClassFromString(_orignType) DBNeedBeLinked]) {
-            objc_property_t property = [self.class getPrimeKeyProperty:_orignType];
             
-            if (property) {
-                _link = YES;
-                _linkType = _orignType;
-                _linkName = _name;
-                
-                const char *cName = property_getName(property);
-                NSString *name = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
-                _name = [NSString stringWithFormat:@"%@%@",_name,name];
-                _orignType = [self convertToType:property];
-            }
-            
-            _dbType = [self convertToDBType:_orignType];
+            _relationType = RelationType_link;
+        }
+        else{
+            _relationType = RelationType_expand;
         }
     }
 }
