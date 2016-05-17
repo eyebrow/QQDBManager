@@ -65,7 +65,7 @@
     dog.name = @"dog2";
     dog.age = 111;
     
-    model.myDog = nil;//dog;
+    model.myDog = dog;
     
     [model insertToDB:^(BOOL isSuccess) {
         

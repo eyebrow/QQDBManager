@@ -15,13 +15,21 @@
 @property (nonatomic, assign) objc_property_t property;
 
 /** 成员属性的名字 例:@"name",@"age",@"height" */
-@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, strong) NSString *name;
 
 /** 原始的类型 例:@"long long" */
 @property (nonatomic, readonly) NSString *orignType;
 
 /** 转换成数据库的类型 例:@"TEXT" */
 @property (nonatomic, readonly) NSString *dbType;
+
+/** 是否是扩展属性 */
+@property (nonatomic, assign) BOOL expand;
+/** 扩展属性的类型 */
+@property (nonatomic, strong) NSString *expandType;
+
+/** 扩展属性的名字 */
+@property (nonatomic, strong) NSString *expandName;
 
 /** 是否是链接属性 */
 @property (nonatomic, readonly) BOOL link;

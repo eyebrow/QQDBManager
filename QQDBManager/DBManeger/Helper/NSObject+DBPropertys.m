@@ -10,6 +10,7 @@
 #import "DBProperty.h"
 #import "DBPropertyCache.h"
 #import "NSObject+DBClass.h"
+#import "DBDefine.h"
 
 static const char DBCachedPropertiesKey = '\0';
 
@@ -50,7 +51,7 @@ static char *kDBPropertysKey;
 }
 
 /**
- *  成员变量转换成JJFMDBProperty数组
+ *  成员变量转换成DBProperty数组
  */
 + (NSMutableArray *)properties
 {
@@ -74,6 +75,23 @@ static char *kDBPropertysKey;
                     || [property.name isEqualToString:@"debugDescription"]) {
                     continue;
                 }
+                
+                if ([property.dbType isEqualToString:DB_SQL_EXPAND]) {
+                    
+                    [NSClassFromString(property.orignType) loadProtypes];
+                    
+                    for (DBProperty *expandProperty in NSClassFromString(property.orignType).propertys){
+                        expandProperty.expand = YES;
+                        expandProperty.expandType = property.orignType;
+                        expandProperty.expandName = property.name;
+                        expandProperty.name = [NSString stringWithFormat:@"%@%@",property.name,expandProperty.name];
+                        
+                        [cachedProperties addObject:expandProperty];
+                    }
+                    
+                    continue;
+                }
+                
                 [cachedProperties addObject:property];
             }
             

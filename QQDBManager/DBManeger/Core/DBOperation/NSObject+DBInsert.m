@@ -183,6 +183,22 @@
                 [self executeRelationShipTableInsertUpdate:linkModel];
             }
         }
+        else if (property.expand){
+            NSString *expandType = property.expandType;
+            NSString *expandName = property.expandName;
+            
+            if (expandType && expandName) {
+                id expandModel = [model valueForKey:property.expandName];
+                NSString *name = [property.name substringFromIndex:expandName.length];
+                
+                if (name) {
+                    value = [expandModel valueForKey:name];
+                }
+                else{
+                    value = @"";
+                }
+            }
+        }
         else{
             value = [model valueForKey:property.name];
             [self valueForFileName:value];
@@ -230,6 +246,22 @@
                 value = [linkModel valueForKey:[NSClassFromString(linkType) DBprimaryKey]];
                 
                 [self executeRelationShipTableInsertUpdate:linkModel];
+            }
+        }
+        else if (property.expand){
+            NSString *expandType = property.expandType;
+            NSString *expandName = property.expandName;
+            
+            if (expandType && expandName) {
+                id expandModel = [model valueForKey:property.expandName];
+                NSString *name = [property.name substringFromIndex:expandName.length];
+                
+                if (name) {
+                   value = [expandModel valueForKey:name];
+                }
+                else{
+                    value = @"";
+                }
             }
         }
         else{

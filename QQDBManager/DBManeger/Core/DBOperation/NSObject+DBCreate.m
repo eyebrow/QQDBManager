@@ -27,8 +27,6 @@
 + (void)DBInit {
     [self loadProtypes];
     [self createTable];
-    
-    [self addColomnsIfNoExist];
 }
 
 #pragma mark - Table
@@ -43,6 +41,8 @@
     [self.dbQueue inDatabaseAsync:^(FMDatabase *db) {
         NSString *createTableSQL = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,%@)",self.DBtableName,[self appendTableSQL]];
         [db executeUpdate:createTableSQL];
+        
+        [self addColomnsIfNoExist];
     }];
 }
 

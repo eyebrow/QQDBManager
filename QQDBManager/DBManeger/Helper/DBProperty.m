@@ -9,6 +9,7 @@
 #import "DBProperty.h"
 #import "DBDefine.h"
 #import "NSObject+DBProtocol.h"
+#import "NSObject+DBPropertys.h"
 
 @implementation DBProperty
 
@@ -121,6 +122,9 @@
     else if([type isEqualToString:@"BOOL"]){
         return DB_SQL_BOOLEAN;
     }
+    else if (NSClassFromString(_orignType)){
+        return DB_SQL_EXPAND;
+    }
     
     return DB_SQL_TEXT;
 }
@@ -132,23 +136,27 @@
     _property = property;
     _name = @(property_getName(property));
     _orignType = [self convertToType:property];
-
-    if ([NSClassFromString(_orignType) DBNeedBeLinked]) {
-        objc_property_t property = [self.class getPrimeKeyProperty:_orignType];
+    _dbType = [self convertToDBType:_orignType];
+    
+    if ([_dbType isEqualToString:DB_SQL_EXPAND]) {
         
-        if (property) {
-             _link = YES;
-            _linkType = _orignType;
-            _linkName = _name;
+        if ([NSClassFromString(_orignType) DBNeedBeLinked]) {
+            objc_property_t property = [self.class getPrimeKeyProperty:_orignType];
             
-            const char *cName = property_getName(property);
-            NSString *name = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
-            _name = [NSString stringWithFormat:@"%@_%@",_name,name];
-            _orignType = [self convertToType:property];
+            if (property) {
+                _link = YES;
+                _linkType = _orignType;
+                _linkName = _name;
+                
+                const char *cName = property_getName(property);
+                NSString *name = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
+                _name = [NSString stringWithFormat:@"%@%@",_name,name];
+                _orignType = [self convertToType:property];
+            }
+            
+            _dbType = [self convertToDBType:_orignType];
         }
     }
-    
-    _dbType = [self convertToDBType:_orignType];
 }
 
 //返回当前类的所有属性
