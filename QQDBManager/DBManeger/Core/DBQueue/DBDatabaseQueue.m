@@ -11,12 +11,47 @@
 
 @implementation DBDatabaseQueue
 
+-(void)inDatabase:(OperationType)type block:(void (^)(FMDatabase *))block
+{
+    if (type == OperationType_Async) {
+        [self inDatabaseAsync:block];
+    }
+    else if (type == OperationType_Sync){
+        [self inDatabaseSync:block];
+    }
+}
+
 #pragma mark - Async
 
 - (void)inDatabaseAsync:(void (^)(FMDatabase *db))block {
     
     FMDBRetain(self);
     dispatch_async(_queue, ^() {
+        //        NSLog(@"数据库执行的线程:%@", [NSThread currentThread]);
+        
+        FMDatabase *db = [self database];
+        block(db);
+        
+        if ([db hasOpenResultSets]) {
+            NSLog(@"Warning: there is at least one open result set around after performing [FMDatabaseQueue inDatabase:]");
+            
+#if defined(DEBUG) && DEBUG
+            NSSet *openSetCopy = FMDBReturnAutoreleased([[db valueForKey:@"_openResultSets"] copy]);
+            for (NSValue *rsInWrappedInATastyValueMeal in openSetCopy) {
+                FMResultSet *rs = (FMResultSet *)[rsInWrappedInATastyValueMeal pointerValue];
+                NSLog(@"query: '%@'", [rs query]);
+            }
+#endif
+        }
+    });
+    
+    FMDBRelease(self);
+}
+
+- (void)inDatabaseSync:(void (^)(FMDatabase *db))block {
+    
+    FMDBRetain(self);
+    dispatch_sync(_queue, ^() {
         //        NSLog(@"数据库执行的线程:%@", [NSThread currentThread]);
         
         FMDatabase *db = [self database];

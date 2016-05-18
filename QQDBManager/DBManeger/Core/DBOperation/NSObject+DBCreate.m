@@ -112,8 +112,9 @@
             
             DBProperty *relationProperty = nil;
             if (primeKey) {
-                for (relationProperty in property.relationProperty) {
-                    if ([primeKey isEqualToString:relationProperty.name]) {
+                for (DBProperty *rProperty in property.relationProperty) {
+                    if ([primeKey isEqualToString:rProperty.name]) {
+                        relationProperty = rProperty;
                         break;
                     }
                 }

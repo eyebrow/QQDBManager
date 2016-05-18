@@ -22,8 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self testInsert];
-    //[self testSearch];
+    //[self testInsert];
+    [self testSearch];
 }
 
 - (void)didReceiveMemoryWarning {

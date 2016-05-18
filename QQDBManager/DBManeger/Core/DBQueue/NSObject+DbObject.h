@@ -23,7 +23,7 @@
 /** 数据库的rowid */
 @property (nonatomic, assign) sqlite_int64 rowid;
 
-+ (void)setValueWithModel:(id)model set:(FMResultSet *)set columeName:(NSString *)columeName columeType:(NSString *)columeType;
++ (void)setValueWithModel:(id)model set:(FMResultSet *)set columeName:(NSString *)columeName propertyName:(NSString *)propertyName columeType:(NSString *)columeType;
 
 + (void)valueForFileName:(id)value;
 

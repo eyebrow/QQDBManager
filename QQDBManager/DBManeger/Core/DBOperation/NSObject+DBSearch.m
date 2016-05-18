@@ -14,6 +14,7 @@
 #import "DBDatabaseQueue.h"
 #import "NSObject+DbObject.h"
 #import "NSObject+DBPropertys.h"
+#import "FMDatabaseQueue.h"
 
 @implementation NSObject (DBSearch)
 
@@ -46,6 +47,14 @@
 
 + (void)executeResult:(FMResultSet *)set block:(DBResults)block {
     
+    NSArray *array = [self executeResult:set];
+    
+    if (block) {
+        block(array);
+    }
+}
+
++ (NSArray *)executeResult:(FMResultSet *)set{
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
     while ([set next]) {
         NSObject *model = [[self alloc] init];
@@ -56,16 +65,36 @@
             if (property.relationType == RelationType_link) {
                 id relationClass = NSClassFromString(property.orignType);
                 NSString *primeKey = [relationClass DBprimaryKey];
-                id relationModel = [model valueForKey:property.name];
-                [self setValueWithModel:relationModel set:set columeName:primeKey columeType:property.orignType];//先设置主键的值
+                NSObject *relationModel = [model valueForKey:property.name];
                 
-                [self executeRelationShipTableSearch:relationModel];
+                DBProperty *relationProperty = nil;
+                if (primeKey) {
+                    for (DBProperty *rProperty in property.relationProperty){
+                        if ([rProperty.name isEqualToString:primeKey]) {
+                            relationProperty = rProperty;
+                            break;
+                        }
+                    }
+                }
+                
+                if (relationProperty) {
+                    
+                    if (relationModel == nil) {
+                        relationModel = [[NSClassFromString(property.orignType) alloc] init];
+                    }
+                    NSString *name = [NSString stringWithFormat:@"%@%@",property.name,primeKey];
+                    [self setValueWithModel:relationModel set:set columeName:name propertyName:relationProperty.name columeType:relationProperty.orignType];//先设置主键的值
+                }
+                
+                relationModel = [self executeRelationShipTableSearch:relationModel];
+                
+                [model setValue:relationModel forKey:property.name];
             }
             else if (property.relationType == RelationType_expand){
                 
             }
             else{
-               [self setValueWithModel:model set:set columeName:property.name columeType:property.orignType];
+                [self setValueWithModel:model set:set columeName:property.name propertyName:property.name columeType:property.orignType];
             }
             
         }
@@ -73,17 +102,29 @@
     }
     [set close];
     
-    if (block) {
-        block(array);
-    }
+    return array;
+
 }
 
-+ (void)executeRelationShipTableSearch:(NSObject *)model
++ (id)executeRelationShipTableSearch:(NSObject *)model
 {
     NSString *where = [NSString stringWithFormat:@"%@='%@'", [model.class DBprimaryKey],[model valueForKey:[model.class DBprimaryKey]]];
-    [model.class searchAllWhere:where results:^(NSArray *results) {
-        
-    }];
+    
+    NSMutableString *searchSQL = [NSMutableString stringWithFormat:@"SELECT * FROM %@ ", model.class.DBtableName];
+    if (where != nil && ![where isEmptyWithTrim]) {
+        [searchSQL appendFormat:@"WHERE %@ ",where];
+    }
+    [model.class SQLString:searchSQL AddOder:nil offset:0 count:0];
+    
+    FMDatabase *db = self.dbQueue.database;
+    FMResultSet *set =[db executeQuery:searchSQL];
+    
+    NSArray *array = [model.class executeResult:set];
+    
+    if (array && array.count > 0) {
+        return [array firstObject];
+    }
+    return nil;
 }
 
 /**

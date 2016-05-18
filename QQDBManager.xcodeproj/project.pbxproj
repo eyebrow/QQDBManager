@@ -22,6 +22,7 @@
 		75744E611CE9C17700D76B91 /* NSObject+DBProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E591CE9C17700D76B91 /* NSObject+DBProtocol.m */; };
 		75744E621CE9C17700D76B91 /* DBDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E5C1CE9C17700D76B91 /* DBDatabaseQueue.m */; };
 		75744E631CE9C17700D76B91 /* NSObject+DbObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E5E1CE9C17700D76B91 /* NSObject+DbObject.m */; };
+		75D185101CEC03230037CD5F /* NSObject+Copying.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D1850F1CEC03230037CD5F /* NSObject+Copying.m */; };
 		75F6328A1CBF977E00CB8460 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F632891CBF977E00CB8460 /* main.m */; };
 		75F6328D1CBF977E00CB8460 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F6328C1CBF977E00CB8460 /* AppDelegate.m */; };
 		75F632901CBF977E00CB8460 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F6328F1CBF977E00CB8460 /* ViewController.m */; };
@@ -85,6 +86,8 @@
 		75744E5C1CE9C17700D76B91 /* DBDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBDatabaseQueue.m; sourceTree = "<group>"; };
 		75744E5D1CE9C17700D76B91 /* NSObject+DbObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DbObject.h"; sourceTree = "<group>"; };
 		75744E5E1CE9C17700D76B91 /* NSObject+DbObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DbObject.m"; sourceTree = "<group>"; };
+		75D1850E1CEC03230037CD5F /* NSObject+Copying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Copying.h"; sourceTree = "<group>"; };
+		75D1850F1CEC03230037CD5F /* NSObject+Copying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Copying.m"; sourceTree = "<group>"; };
 		75F632851CBF977E00CB8460 /* QQDBManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QQDBManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F632891CBF977E00CB8460 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75F6328B1CBF977E00CB8460 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				75728EC61CE5B93D006D60FF /* NSString+DBModel.m */,
 				75744E4D1CE9752700D76B91 /* NSDate+DBModel.h */,
 				75744E4E1CE9752700D76B91 /* NSDate+DBModel.m */,
+				75D1850E1CEC03230037CD5F /* NSObject+Copying.h */,
+				75D1850F1CEC03230037CD5F /* NSObject+Copying.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -487,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				751A538A1CDB38F70074B592 /* PersonModel.m in Sources */,
+				75D185101CEC03230037CD5F /* NSObject+Copying.m in Sources */,
 				75F632901CBF977E00CB8460 /* ViewController.m in Sources */,
 				7525D5281CE31DB9002F8153 /* NSObject+DBPropertys.m in Sources */,
 				75728EC71CE5B93D006D60FF /* NSString+DBModel.m in Sources */,
