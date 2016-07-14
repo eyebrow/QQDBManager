@@ -123,7 +123,19 @@
                 [model setValue:relationModel forKey:property.name];
             }
             else if (property.relationType == RelationType_expand){
+
+                NSObject *relationModel = [model valueForKey:property.name];
+                if (relationModel == nil) {
+                    relationModel = [[NSClassFromString(property.orignType) alloc] init];
+                }
                 
+                for (DBProperty *relationProperty in property.relationProperty){
+                    NSString *name = [NSString stringWithFormat:@"%@%@",property.name,relationProperty.name];
+                    
+                    [self setValueWithModel:relationModel set:set columeName:name propertyName:relationProperty.name columeType:relationProperty.orignType];
+                }
+                
+                [model setValue:relationModel forKey:property.name];
             }
             else{
                 [self setValueWithModel:model set:set columeName:property.name propertyName:property.name columeType:property.orignType];

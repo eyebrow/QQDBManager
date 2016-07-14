@@ -34,10 +34,10 @@
     return @"number";
 }
 
-+(BOOL)DBNeedBeLinked
-{
-    return YES;
-}
+//+(BOOL)DBNeedBeLinked
+//{
+//    return YES;
+//}
 
 +(NSDictionary *)DBBeLinkedProperties
 {
