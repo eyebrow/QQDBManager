@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		751886B91D3633520029B2C7 /* NSObject+coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 751886B81D3633520029B2C7 /* NSObject+coder.m */; };
+		751886BD1D36529E0029B2C7 /* NSObject+DBCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E551CE9C17700D76B91 /* NSObject+DBCreate.m */; };
+		751886C01D367A370029B2C7 /* NSObject+ModelToDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 751886BF1D367A370029B2C7 /* NSObject+ModelToDictionary.m */; };
+		751886C21D367DEB0029B2C7 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 751886C11D367DEB0029B2C7 /* 2.jpg */; };
 		751A538A1CDB38F70074B592 /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 751A53891CDB38F70074B592 /* PersonModel.m */; };
 		751A538D1CDB3F730074B592 /* DogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 751A538C1CDB3F730074B592 /* DogModel.m */; };
 		751A53CB1CDC45250074B592 /* QQFileHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 751A53CA1CDC45250074B592 /* QQFileHandler.m */; };
@@ -22,6 +26,8 @@
 		75744E611CE9C17700D76B91 /* NSObject+DBProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E591CE9C17700D76B91 /* NSObject+DBProtocol.m */; };
 		75744E621CE9C17700D76B91 /* DBDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E5C1CE9C17700D76B91 /* DBDatabaseQueue.m */; };
 		75744E631CE9C17700D76B91 /* NSObject+DbObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E5E1CE9C17700D76B91 /* NSObject+DbObject.m */; };
+		75B3EC101D349240000809F0 /* BookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B3EC0F1D349240000809F0 /* BookModel.m */; };
+		75B3EC161D34E282000809F0 /* NSArray+DBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B3EC151D34E282000809F0 /* NSArray+DBModel.m */; };
 		75D185101CEC03230037CD5F /* NSObject+Copying.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D1850F1CEC03230037CD5F /* NSObject+Copying.m */; };
 		75F6328A1CBF977E00CB8460 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F632891CBF977E00CB8460 /* main.m */; };
 		75F6328D1CBF977E00CB8460 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F6328C1CBF977E00CB8460 /* AppDelegate.m */; };
@@ -32,7 +38,6 @@
 		75F6329B1CBF977E00CB8460 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F632991CBF977E00CB8460 /* LaunchScreen.storyboard */; };
 		75F632A61CBF977E00CB8460 /* QQDBManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F632A51CBF977E00CB8460 /* QQDBManagerTests.m */; };
 		75F632B11CBF977E00CB8460 /* QQDBManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F632B01CBF977E00CB8460 /* QQDBManagerUITests.m */; };
-		CA15E4A132DA67B7BCC17B28 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A3D4F171DC6045BE89C803 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +58,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		66A3D4F171DC6045BE89C803 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		751886B71D3633520029B2C7 /* NSObject+coder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+coder.h"; sourceTree = "<group>"; };
+		751886B81D3633520029B2C7 /* NSObject+coder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+coder.m"; sourceTree = "<group>"; };
+		751886BE1D367A370029B2C7 /* NSObject+ModelToDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ModelToDictionary.h"; sourceTree = "<group>"; };
+		751886BF1D367A370029B2C7 /* NSObject+ModelToDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ModelToDictionary.m"; sourceTree = "<group>"; };
+		751886C11D367DEB0029B2C7 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		751A53881CDB38F70074B592 /* PersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
 		751A53891CDB38F70074B592 /* PersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
 		751A538B1CDB3F730074B592 /* DogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DogModel.h; sourceTree = "<group>"; };
@@ -86,6 +95,10 @@
 		75744E5C1CE9C17700D76B91 /* DBDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBDatabaseQueue.m; sourceTree = "<group>"; };
 		75744E5D1CE9C17700D76B91 /* NSObject+DbObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DbObject.h"; sourceTree = "<group>"; };
 		75744E5E1CE9C17700D76B91 /* NSObject+DbObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DbObject.m"; sourceTree = "<group>"; };
+		75B3EC0E1D349240000809F0 /* BookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookModel.h; sourceTree = "<group>"; };
+		75B3EC0F1D349240000809F0 /* BookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookModel.m; sourceTree = "<group>"; };
+		75B3EC141D34E282000809F0 /* NSArray+DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DBModel.h"; sourceTree = "<group>"; };
+		75B3EC151D34E282000809F0 /* NSArray+DBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DBModel.m"; sourceTree = "<group>"; };
 		75D1850E1CEC03230037CD5F /* NSObject+Copying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Copying.h"; sourceTree = "<group>"; };
 		75D1850F1CEC03230037CD5F /* NSObject+Copying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Copying.m"; sourceTree = "<group>"; };
 		75F632851CBF977E00CB8460 /* QQDBManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QQDBManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,8 +118,6 @@
 		75F632AC1CBF977E00CB8460 /* QQDBManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QQDBManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F632B01CBF977E00CB8460 /* QQDBManagerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQDBManagerUITests.m; sourceTree = "<group>"; };
 		75F632B21CBF977E00CB8460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC8532BA6153BB44DF30DD06 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		E34377262E7413227104F9E5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +125,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA15E4A132DA67B7BCC17B28 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,23 +145,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4AA821832F783DD118821F39 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				66A3D4F171DC6045BE89C803 /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6A6030449521C6B19FD0E0B0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CC8532BA6153BB44DF30DD06 /* Pods.debug.xcconfig */,
-				E34377262E7413227104F9E5 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		751A53871CDB38C30074B592 /* Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +152,8 @@
 				751A53891CDB38F70074B592 /* PersonModel.m */,
 				751A538B1CDB3F730074B592 /* DogModel.h */,
 				751A538C1CDB3F730074B592 /* DogModel.m */,
+				75B3EC0E1D349240000809F0 /* BookModel.h */,
+				75B3EC0F1D349240000809F0 /* BookModel.m */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -198,8 +193,14 @@
 				75728EC61CE5B93D006D60FF /* NSString+DBModel.m */,
 				75744E4D1CE9752700D76B91 /* NSDate+DBModel.h */,
 				75744E4E1CE9752700D76B91 /* NSDate+DBModel.m */,
+				75B3EC141D34E282000809F0 /* NSArray+DBModel.h */,
+				75B3EC151D34E282000809F0 /* NSArray+DBModel.m */,
 				75D1850E1CEC03230037CD5F /* NSObject+Copying.h */,
 				75D1850F1CEC03230037CD5F /* NSObject+Copying.m */,
+				751886B71D3633520029B2C7 /* NSObject+coder.h */,
+				751886B81D3633520029B2C7 /* NSObject+coder.m */,
+				751886BE1D367A370029B2C7 /* NSObject+ModelToDictionary.h */,
+				751886BF1D367A370029B2C7 /* NSObject+ModelToDictionary.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -246,8 +247,6 @@
 				75F632A41CBF977E00CB8460 /* QQDBManagerTests */,
 				75F632AF1CBF977E00CB8460 /* QQDBManagerUITests */,
 				75F632861CBF977E00CB8460 /* Products */,
-				6A6030449521C6B19FD0E0B0 /* Pods */,
-				4AA821832F783DD118821F39 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -264,6 +263,7 @@
 		75F632871CBF977E00CB8460 /* QQDBManager */ = {
 			isa = PBXGroup;
 			children = (
+				751886C11D367DEB0029B2C7 /* 2.jpg */,
 				751A53E91CDC7DDD0074B592 /* DBManeger */,
 				751A53C81CDC44FB0074B592 /* FileOperation */,
 				751A53871CDB38C30074B592 /* Test */,
@@ -314,12 +314,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75F632B51CBF977E00CB8460 /* Build configuration list for PBXNativeTarget "QQDBManager" */;
 			buildPhases = (
-				82DA7815A83ADFC3E710F8AB /* Check Pods Manifest.lock */,
 				75F632811CBF977E00CB8460 /* Sources */,
 				75F632821CBF977E00CB8460 /* Frameworks */,
 				75F632831CBF977E00CB8460 /* Resources */,
-				3C984E84BC80B973B066723F /* Embed Pods Frameworks */,
-				E7AD0397DBD8C51287F601F8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -418,6 +415,7 @@
 			files = (
 				75F6329B1CBF977E00CB8460 /* LaunchScreen.storyboard in Resources */,
 				75F632981CBF977E00CB8460 /* Assets.xcassets in Resources */,
+				751886C21D367DEB0029B2C7 /* 2.jpg in Resources */,
 				75F632931CBF977E00CB8460 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,60 +436,13 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		3C984E84BC80B973B066723F /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		82DA7815A83ADFC3E710F8AB /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E7AD0397DBD8C51287F601F8 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		75F632811CBF977E00CB8460 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				751A538A1CDB38F70074B592 /* PersonModel.m in Sources */,
+				75B3EC161D34E282000809F0 /* NSArray+DBModel.m in Sources */,
 				75D185101CEC03230037CD5F /* NSObject+Copying.m in Sources */,
 				75F632901CBF977E00CB8460 /* ViewController.m in Sources */,
 				7525D5281CE31DB9002F8153 /* NSObject+DBPropertys.m in Sources */,
@@ -499,6 +450,7 @@
 				751A53CB1CDC45250074B592 /* QQFileHandler.m in Sources */,
 				75744E611CE9C17700D76B91 /* NSObject+DBProtocol.m in Sources */,
 				75F6328D1CBF977E00CB8460 /* AppDelegate.m in Sources */,
+				75B3EC101D349240000809F0 /* BookModel.m in Sources */,
 				754D40541CEB1F56005C7136 /* NSObject+DBSearch.m in Sources */,
 				75F6328A1CBF977E00CB8460 /* main.m in Sources */,
 				75F632961CBF977E00CB8460 /* QQDBManager.xcdatamodeld in Sources */,
@@ -509,8 +461,10 @@
 				7525D52B1CE31DF2002F8153 /* DBProperty.m in Sources */,
 				75744E5F1CE9C17700D76B91 /* NSObject+DBCreate.m in Sources */,
 				75744E631CE9C17700D76B91 /* NSObject+DbObject.m in Sources */,
+				751886C01D367A370029B2C7 /* NSObject+ModelToDictionary.m in Sources */,
 				7525D5261CE31DB9002F8153 /* DBPropertyCache.m in Sources */,
 				75744E4F1CE9752700D76B91 /* NSDate+DBModel.m in Sources */,
+				751886B91D3633520029B2C7 /* NSObject+coder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75F632A61CBF977E00CB8460 /* QQDBManagerTests.m in Sources */,
+				751886BD1D36529E0029B2C7 /* NSObject+DBCreate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,7 +604,6 @@
 		};
 		75F632B61CBF977E00CB8460 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC8532BA6153BB44DF30DD06 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = QQDBManager/Info.plist;
@@ -661,7 +615,6 @@
 		};
 		75F632B71CBF977E00CB8460 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E34377262E7413227104F9E5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = QQDBManager/Info.plist;

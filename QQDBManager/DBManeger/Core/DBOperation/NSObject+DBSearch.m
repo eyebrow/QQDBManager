@@ -59,10 +59,42 @@
     while ([set next]) {
         NSObject *model = [[self alloc] init];
         model.rowid = [set intForColumnIndex:0];
+        if (self.propertys == nil) {
+            [self loadProtypes];
+        }
+        
         for (int i=0; i<self.propertys.count; i++) {
             DBProperty *property = [self.propertys objectAtIndex:i];
             
-            if (property.relationType == RelationType_link) {
+            if (property.relationType == RelationType_array){
+                
+                [self setValueWithModel:model set:set columeName:property.name propertyName:property.name columeType:property.orignType];
+                
+                NSString *itemType = [[model.class DBArrayProperties] objectForKey:property.name];
+                id relationClass = NSClassFromString(itemType);
+                
+                if ([relationClass DBNeedBeLinked]){
+                    NSArray *tmpList = [model valueForKey:property.name];
+                    
+                    if (tmpList && [tmpList count] > 0) {
+                        NSMutableArray *itemList = [[NSMutableArray alloc]initWithCapacity:[tmpList count]];
+                        NSString *primeKey = [relationClass DBprimaryKey];
+                        
+                        for (id item in tmpList) {
+                            id itemModel = [relationClass new];
+                            [itemModel setValue:item forKey:primeKey];
+                            
+                            itemModel = [self executeRelationShipTableSearch:itemModel];
+                            
+                            [itemList addObject:itemModel];
+                        }
+                        
+                        [model setValue:itemList forKey:property.name];
+                    }
+                    
+                }
+            }
+            else if (property.relationType == RelationType_link) {
                 id relationClass = NSClassFromString(property.orignType);
                 NSString *primeKey = [relationClass DBprimaryKey];
                 NSObject *relationModel = [model valueForKey:property.name];

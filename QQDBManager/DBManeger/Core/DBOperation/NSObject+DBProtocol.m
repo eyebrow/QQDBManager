@@ -51,6 +51,12 @@
     return nil;
 }
 
+/** 数组中model的类型*/
++ (NSDictionary *)DBArrayProperties
+{
+    return nil;
+}
+
 #pragma mark - Property
 
 static char *kDbQueueKey;

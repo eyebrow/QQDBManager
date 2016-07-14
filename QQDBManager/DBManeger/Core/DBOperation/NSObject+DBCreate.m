@@ -54,15 +54,55 @@
         for (int i=0; i<self.propertys.count; i++) {
             DBProperty *property = [self.propertys objectAtIndex:i];
             
-            if ([db columnExists:property.name inTableWithName:[self DBtableName]] == NO) {
-                
-                NSLog(@"NO ColumnExists： %@ ",property.name);
-                
-                if ([self addColumn:property.name toTable:[self DBtableName] withType:property.dbType inDatabase:db]) {
-                    NSLog(@"addColum： %@ success",property.name);
+            NSString *name = property.name;
+            
+            if (property.relationType == RelationType_array){
+                if ([db columnExists:name inTableWithName:[self DBtableName]] == NO) {
+                    
+                    NSLog(@"NO ColumnExists： %@ ",name);
+                    
+                    if ([self addColumn:name toTable:[self DBtableName] withType:property.dbType inDatabase:db]) {
+                        NSLog(@"addColum： %@ success",name);
+                    }
+                    else{
+                        NSLog(@"addColum： %@ failed",name);
+                    }
                 }
-                else{
-                    NSLog(@"addColum： %@ failed",property.name);
+            }
+            else if (property.relationType == RelationType_link){
+                id relationClass = NSClassFromString(property.orignType);
+                NSString *primeKey = [relationClass DBprimaryKey];
+                if (primeKey) {
+                    name = [NSString stringWithFormat:@"%@%@",property.name,primeKey];
+                }
+                
+                if ([db columnExists:name inTableWithName:[self DBtableName]] == NO) {
+                    
+                    NSLog(@"NO ColumnExists： %@ ",name);
+                    
+                    if ([self addColumn:name toTable:[self DBtableName] withType:property.dbType inDatabase:db]) {
+                        NSLog(@"addColum： %@ success",name);
+                    }
+                    else{
+                        NSLog(@"addColum： %@ failed",name);
+                    }
+                }
+            }
+            else if (property.relationType == RelationType_expand){
+                for (DBProperty *relationProperty in property.relationProperty) {
+                    name = [NSString stringWithFormat:@"%@%@",property.name,relationProperty.name];
+                    
+                    if ([db columnExists:name inTableWithName:[self DBtableName]] == NO) {
+                        
+                        NSLog(@"NO ColumnExists： %@ ",name);
+                        
+                        if ([self addColumn:name toTable:[self DBtableName] withType:property.dbType inDatabase:db]) {
+                            NSLog(@"addColum： %@ success",name);
+                        }
+                        else{
+                            NSLog(@"addColum： %@ failed",name);
+                        }
+                    }
                 }
             }
         }
@@ -106,7 +146,21 @@
         
         DBProperty *property = [self.propertys objectAtIndex:i];
         
-        if (property.relationType == RelationType_link) {
+        if (property.relationType == RelationType_array){
+            
+            name = property.name;
+            dbType = property.dbType;
+            
+            if (name && dbType) {
+                [tableSQL appendFormat:@"%@ %@", name, dbType];
+            }
+            
+            if (self.propertys.count != i+1) {
+                [tableSQL appendString:@","];
+            }
+            
+        }
+        else if (property.relationType == RelationType_link) {
             id relationClass = NSClassFromString(property.orignType);
              NSString *primeKey = [relationClass DBprimaryKey];
             

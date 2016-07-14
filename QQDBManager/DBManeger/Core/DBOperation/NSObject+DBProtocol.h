@@ -31,6 +31,9 @@
 /** 被其他model链接的属性*/
 + (NSDictionary *)DBBeLinkedProperties;
 
+/** 数组中model的类型*/
++ (NSDictionary *)DBArrayProperties;
+
 @end
 
 @interface NSObject (DBProtocol) <DBProtocol>

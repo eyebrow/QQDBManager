@@ -12,6 +12,7 @@
 #import "DBManeger/DBModel.h"
 
 #import "DogModel.h"
+#import "BookModel.h"
 
 @interface ViewController ()
 
@@ -67,30 +68,54 @@
     model.age = 20;
     model.sex = YES;
     model.height = 180;
-    model.birthDay = [NSDate date];
-    NSString *str = @"王子的奋斗奋斗的风格";
-    model.stuff = [NSData dataWithBytes:str.UTF8String length:str.length];
+    model.image = [UIImage imageNamed:@"2.jpg"];
+    
+    NSMutableArray *bookList = [NSMutableArray new];
+    for (int i = 0; i < 5; i++) {
+        BookModel *bmodel = [BookModel new];
+        bmodel.bookId = i;
+        bmodel.bookName = [NSString stringWithFormat:@"book-%zd",i];
+        bmodel.price = 99.90;
+        bmodel.publisher = @"prince-w";
+        bmodel.image = [UIImage imageNamed:@"2.jpg"];
+        
+        [bookList addObject:bmodel];
+    }
+    
+    DogModel *dog = nil;
+    
+    model.books = [bookList copy];
     
     for (int i = 0; i < 20; i++) {
         
-        DogModel *dog = [DogModel new];
+        dog = [DogModel new];
         dog.number = arc4random() % 100;
         dog.name = @"dog2";
         dog.age = 111;
         
-        model.myDog = dog;
-        
-        [[model copy] insertToDB:^(BOOL isSuccess) {
-
+        [[dog copy] insertToDB:^(BOOL isSuccess) {
+            
             if (isSuccess) {
                 NSLog(@"insertToDB isSuccess");
             }
             else {
                 NSLog(@"insertToDB failed");
             }
-            
         }];
     }
+    
+    model.dog = dog;
+    
+    [[model copy] insertToDB:^(BOOL isSuccess) {
+        
+        if (isSuccess) {
+            NSLog(@"insertToDB isSuccess");
+        }
+        else {
+            NSLog(@"insertToDB failed");
+        }
+        
+    }];
     
     
 //    [dog insertToDB:^(BOOL isSuccess) {
@@ -114,7 +139,11 @@
         NSArray *tmpArry = [results copy];
         
         for (PersonModel *model in tmpArry) {
-            NSLog(@"model...");
+            NSLog(@"model... :%@",model);
+            
+            NSDictionary *dict = [model dictionaryValue];
+            
+            NSLog(@"dict... :%@",dict);
         }
     }];
 }

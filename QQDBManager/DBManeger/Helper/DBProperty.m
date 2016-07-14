@@ -112,8 +112,10 @@
         return DB_SQL_BLOB;
     }
     else if ([type isEqualToString:@"NSArray"] ||
-             [type isEqualToString:@"NSMutableArray"] ||
-             [type isEqualToString:@"NSDictionary"] ||
+             [type isEqualToString:@"NSMutableArray"]) {
+        return DB_SQL_BLOB;
+    }
+    else if ([type isEqualToString:@"NSDictionary"] ||
              [type isEqualToString:@"NSMutableDictionary"] ||
              [type isEqualToString:@"NSSet"] ||
              [type isEqualToString:@"NSMutableSet"]) {
@@ -138,11 +140,15 @@
     _orignType = [self convertToType:property];
     _dbType = [self convertToDBType:_orignType];
     
-    if ([_dbType isEqualToString:DB_SQL_EXPAND]) {
+    if ([_orignType isEqualToString:@"NSArray"] || [_orignType isEqualToString:@"NSMutableArray"]) {
+        _relationType = RelationType_array;
+
+    }
+    else if ([_dbType isEqualToString:DB_SQL_EXPAND]) {
         
         
         [NSClassFromString(_orignType) loadProtypes];
-        _relationProperty = NSClassFromString(_orignType).propertys;
+        _relationProperty =  NSClassFromString(_orignType).propertys;
         
         if ([NSClassFromString(_orignType) DBNeedBeLinked]) {
             

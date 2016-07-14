@@ -12,24 +12,26 @@
 
 @implementation PersonModel
 
--(id)copyWithZone:(NSZone *)zone
-{
-    PersonModel *result = [[[self class] allocWithZone:zone] init];
-    
-    //result. = [self->_obj copy];
-    result.uin = self.uin;
-    result.myDog = [self.myDog copy];
-    result.name = self.name;
-    result.age = self.age;
-    result.age2 = self.age2;
-    result.sex = self.sex;
-    result.sex2 = self.sex2;
-    result.birthDay = self.birthDay;
-    result.height = self.height;
-    result.stuff = self.stuff;
-    
-    return result;
-}
+//-(id)copyWithZone:(NSZone *)zone
+//{
+//    PersonModel *result = [[[self class] allocWithZone:zone] init];
+//    
+//    //result. = [self->_obj copy];
+//    result.uin = self.uin;
+//    
+//    result.name = self.name;
+//    result.age = self.age;
+//
+//    result.sex = self.sex;
+//
+//    result.height = self.height;
+//
+//    result.dog = [self.dog copy];
+//    
+//    result.books = [self.books copy];
+//    
+//    return result;
+//}
 
 +(NSString *)DBtableName
 {
@@ -39,6 +41,15 @@
 +(NSString *)DBprimaryKey
 {
     return @"uin";
+}
+
++(NSDictionary *)DBArrayProperties
+{
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    
+    [dict setValue:@"BookModel" forKey:@"books"];
+    
+    return dict;
 }
 
 - (instancetype)init

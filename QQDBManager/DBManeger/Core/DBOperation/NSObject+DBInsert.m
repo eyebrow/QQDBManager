@@ -20,7 +20,7 @@
 #pragma mark Insert model
 
 - (void)insertToDB:(DBSuccess)block {
-    
+
     self.primaryKey = [self.class DBprimaryKey];
     
     if (self.primaryKey) {
@@ -173,7 +173,51 @@
         
         id value = nil;
         
-        if (property.relationType == RelationType_link) {
+        if (property.relationType == RelationType_array) {
+            
+            NSArray *relationArray = [model valueForKey:property.name];
+            if (relationArray && [relationArray count]) {
+                
+                NSMutableArray *valuesArray = [[NSMutableArray alloc]initWithCapacity:[relationArray count]];
+                NSString *itemType = [[model.class DBArrayProperties] objectForKey:property.name];
+                
+                if (itemType) {
+                    if ([NSClassFromString(itemType) DBNeedBeLinked]) {
+                        
+                        NSString *primeKey = [NSClassFromString(itemType) DBprimaryKey];
+                        
+                        for (NSObject *relationModel in relationArray){
+                            
+                            [self executeRelationShipTableInsertUpdate:relationModel];
+                            
+                            value = [relationModel valueForKey:primeKey];
+                            
+                            [valuesArray addObject:value];
+                        }
+                    }
+                    else{
+                        valuesArray = [relationArray mutableCopy];
+                    }
+                }
+                
+                NSData *objSerialize = nil;
+                if (valuesArray && [valuesArray count] > 0) {
+                    objSerialize = [NSKeyedArchiver archivedDataWithRootObject:valuesArray];
+                }
+                
+                NSString *name = [NSString stringWithFormat:@"%@",property.name];
+                
+                if (name && objSerialize) {
+                    [insertKey appendFormat:@"%@,", name];
+                    [insertValuesStr appendString:@"?,"];
+                    [insertValues addObject:objSerialize];
+                }
+                else{
+                    NSLog(@"value字段值为空...");
+                }
+            }
+        }
+        else if (property.relationType == RelationType_link) {
             id relationClass = NSClassFromString(property.orignType);
             NSString *primeKey = [relationClass DBprimaryKey];
             id relationModel = [model valueForKey:property.name];
@@ -217,7 +261,7 @@
         }
         else{
             value = [model valueForKey:property.name];
-            [self valueForFileName:value];
+            value = [self valueForFileName:value];
             
             if (value) {
                 [insertKey appendFormat:@"%@,", property.name];
@@ -252,7 +296,51 @@
         
         id value = nil;
         
-        if (property.relationType == RelationType_link) {
+        if (property.relationType == RelationType_array) {
+            
+            NSArray *relationArray = [model valueForKey:property.name];
+            if (relationArray && [relationArray count]) {
+                
+                NSMutableArray *valuesArray = [[NSMutableArray alloc]initWithCapacity:[relationArray count]];
+                NSString *itemType = [[model.class DBArrayProperties] objectForKey:property.name];
+                
+                if (itemType) {
+                    if ([NSClassFromString(itemType) DBNeedBeLinked]) {
+                        
+                        NSString *primeKey = [NSClassFromString(itemType) DBprimaryKey];
+                        
+                        for (NSObject *relationModel in relationArray){
+                            
+                            [self executeRelationShipTableInsertUpdate:relationModel];
+                            
+                            value = [relationModel valueForKey:primeKey];
+                            
+                            [valuesArray addObject:value];
+                        }
+                    }
+                    else{
+                        valuesArray = [relationArray mutableCopy];
+                    }
+                }
+                
+                NSData *objSerialize = nil;
+                if (valuesArray && [valuesArray count] > 0) {
+                    objSerialize = [NSKeyedArchiver archivedDataWithRootObject:valuesArray];
+                }
+                
+                NSString *name = [NSString stringWithFormat:@"%@",property.name];
+                
+                if (name && objSerialize) {
+                    
+                    [setKey appendFormat:@"%@=?,", name];
+                    [setValues addObject:objSerialize];
+                }
+                else{
+                    NSLog(@"value字段值为空...");
+                }
+            }
+        }
+        else if (property.relationType == RelationType_link) {
             
             id relationClass = NSClassFromString(property.orignType);
             NSString *primeKey = [relationClass DBprimaryKey];

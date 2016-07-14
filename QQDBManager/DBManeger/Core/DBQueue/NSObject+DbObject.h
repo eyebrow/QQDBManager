@@ -25,6 +25,6 @@
 
 + (void)setValueWithModel:(id)model set:(FMResultSet *)set columeName:(NSString *)columeName propertyName:(NSString *)propertyName columeType:(NSString *)columeType;
 
-+ (void)valueForFileName:(id)value;
++ (id)valueForFileName:(id)value;
 
 @end

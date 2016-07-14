@@ -7,6 +7,7 @@
 //
 
 #import "NSObject+Copying.h"
+#import "DBProperty.h"
 #import "NSObject+DBPropertys.h"
 
 @implementation NSObject (Copying)
@@ -16,6 +17,12 @@
     id model = [[[self class] allocWithZone:zone] init];
     if (self.class.propertys == nil) {
         [self.class loadProtypes];
+    }
+    
+    for (DBProperty *property in self.class.propertys) {
+        id value = [self valueForKey:property.name];
+        
+        [model setValue:value forKey:property.name];
     }
     
     return model;

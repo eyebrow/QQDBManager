@@ -14,6 +14,7 @@ typedef enum{
     RelationType_default,
     RelationType_link,
     RelationType_expand,
+    RelationType_array,
     
 }RelationType;
 
@@ -21,6 +22,7 @@ typedef enum{
 /** 成员属性 */
 @property (nonatomic, assign) objc_property_t property;
 
+@property (nonatomic, readonly)NSString *parent;
 /** 成员属性的名字 例:@"name",@"age",@"height" */
 @property (nonatomic, readonly) NSString *name;
 
@@ -31,7 +33,7 @@ typedef enum{
 @property (nonatomic, readonly) NSString *dbType;
 
 @property (nonatomic, readonly)RelationType relationType;
-@property (nonatomic, readonly) NSArray<DBProperty *> *relationProperty;
+@property (nonatomic, readonly)NSArray *relationProperty;
 
 #pragma mark - Public Methods
 

@@ -92,6 +92,14 @@ static char *kRowidKey;
             [model setValue:data forKey:propertyName];
         }
     }
+    else if ([columeType isEqualToString:@"NSArray"] ||
+             [columeType isEqualToString:@"NSMutableArray"]){
+        NSData *data = [set dataForColumn:columeName];
+        
+        id relationModel = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        
+        [model setValue:relationModel forKey:propertyName];
+    }
 }
 
 /**
@@ -99,10 +107,10 @@ static char *kRowidKey;
  *
  *  @param value 文件的名字
  */
-+ (void)valueForFileName:(id)value
++ (id)valueForFileName:(id)value
 {
     if (!value) {
-        return ;
+        return nil;
     }
     
     NSDate *date = [NSDate date];
@@ -123,6 +131,7 @@ static char *kRowidKey;
     {
         value = [NSDate stringWithDate:value];
     }
+    return value;
 }
 
 @end
