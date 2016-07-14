@@ -38,6 +38,7 @@
 		75F6329B1CBF977E00CB8460 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F632991CBF977E00CB8460 /* LaunchScreen.storyboard */; };
 		75F632A61CBF977E00CB8460 /* QQDBManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F632A51CBF977E00CB8460 /* QQDBManagerTests.m */; };
 		75F632B11CBF977E00CB8460 /* QQDBManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F632B01CBF977E00CB8460 /* QQDBManagerUITests.m */; };
+		AEB05C68115E4BF880A592DE /* Pods_QQDBManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F541C11439A7AA725D4929D6 /* Pods_QQDBManager.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,9 @@
 		75F632AC1CBF977E00CB8460 /* QQDBManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QQDBManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F632B01CBF977E00CB8460 /* QQDBManagerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQDBManagerUITests.m; sourceTree = "<group>"; };
 		75F632B21CBF977E00CB8460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A56078705E2D98AD7F2D2561 /* Pods-QQDBManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QQDBManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QQDBManager/Pods-QQDBManager.debug.xcconfig"; sourceTree = "<group>"; };
+		EDDE69C4D99DC32D1A14BD20 /* Pods-QQDBManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QQDBManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-QQDBManager/Pods-QQDBManager.release.xcconfig"; sourceTree = "<group>"; };
+		F541C11439A7AA725D4929D6 /* Pods_QQDBManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QQDBManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEB05C68115E4BF880A592DE /* Pods_QQDBManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +150,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		62DFB3027AE50D104779C6B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F541C11439A7AA725D4929D6 /* Pods_QQDBManager.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		751A53871CDB38C30074B592 /* Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +260,8 @@
 				75F632A41CBF977E00CB8460 /* QQDBManagerTests */,
 				75F632AF1CBF977E00CB8460 /* QQDBManagerUITests */,
 				75F632861CBF977E00CB8460 /* Products */,
+				C0ACE2084B0A4DED68E2AC56 /* Pods */,
+				62DFB3027AE50D104779C6B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -307,6 +322,15 @@
 			path = QQDBManagerUITests;
 			sourceTree = "<group>";
 		};
+		C0ACE2084B0A4DED68E2AC56 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A56078705E2D98AD7F2D2561 /* Pods-QQDBManager.debug.xcconfig */,
+				EDDE69C4D99DC32D1A14BD20 /* Pods-QQDBManager.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -314,9 +338,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75F632B51CBF977E00CB8460 /* Build configuration list for PBXNativeTarget "QQDBManager" */;
 			buildPhases = (
+				5D9570FEA334DF0097C86872 /* [CP] Check Pods Manifest.lock */,
 				75F632811CBF977E00CB8460 /* Sources */,
 				75F632821CBF977E00CB8460 /* Frameworks */,
 				75F632831CBF977E00CB8460 /* Resources */,
+				2316A6C004F06B694545CB45 /* [CP] Embed Pods Frameworks */,
+				5E0C7A26DC252E90CD0313AE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -435,6 +462,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2316A6C004F06B694545CB45 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QQDBManager/Pods-QQDBManager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D9570FEA334DF0097C86872 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5E0C7A26DC252E90CD0313AE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QQDBManager/Pods-QQDBManager-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		75F632811CBF977E00CB8460 /* Sources */ = {
@@ -604,6 +679,7 @@
 		};
 		75F632B61CBF977E00CB8460 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A56078705E2D98AD7F2D2561 /* Pods-QQDBManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = QQDBManager/Info.plist;
@@ -615,6 +691,7 @@
 		};
 		75F632B71CBF977E00CB8460 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDDE69C4D99DC32D1A14BD20 /* Pods-QQDBManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = QQDBManager/Info.plist;

@@ -383,8 +383,17 @@
             }
         }
         else{
+            NSString *name = [NSString stringWithFormat:@"%@",property.name];
             value = [model valueForKey:property.name];
-            [self valueForFileName:value];
+            value = [self valueForFileName:value];
+            
+            if (name && value) {
+                [setKey appendFormat:@"%@=?,", name];
+                [setValues addObject:value];
+            }
+            else{
+                NSLog(@"value字段值为空...");
+            }
         }
     }
     if (setKey.length > 0) {

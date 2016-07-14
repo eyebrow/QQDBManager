@@ -16,6 +16,8 @@
 
 @interface ViewController ()
 
+@property(nonatomic,strong)IBOutlet UITextView *textView;
+
 @end
 
 @implementation ViewController
@@ -24,7 +26,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     //[self testInsert];
-    [self testSearch];
+    //[self testSearch];
+    
+    _textView.text = @"测试数据:";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,34 +36,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)clickedInset
+{
+    [self testInsert];
+}
+
+-(IBAction)clickedSearch
+{
+    [self testSearch];
+}
+
 -(void)testInsert
 {
-    
-//    PersonModel *model = [PersonModel new];
-//    model.uin = arc4random() % 1000;
-//    model.name = @"prince";
-//    model.age = 20;
-//    model.sex = YES;
-//    model.height = 180;
-//    model.birthDay = [NSDate date];
-//    NSString *str = @"王子的奋斗奋斗的风格";
-//    model.stuff = [NSData dataWithBytes:str.UTF8String length:str.length];
-//    model.faceImg = nil;
-//    model.skinColor = [UIColor blueColor];
-    
-    //NSMutableArray *list = [model.class properties];
-    
-//    [model insertToDB:^(BOOL isSuccess) {
-//        
-//        if (isSuccess) {
-//            NSLog(@"insertToDB isSuccess");
-//        }
-//        else {
-//            NSLog(@"insertToDB failed");
-//        }
-//        
-//    }];
-    
     NSLog(@".....");
     
     PersonModel *model = [PersonModel new];
@@ -73,7 +61,7 @@
     NSMutableArray *bookList = [NSMutableArray new];
     for (int i = 0; i < 5; i++) {
         BookModel *bmodel = [BookModel new];
-        bmodel.bookId = i;
+        bmodel.bookId = arc4random() % 10000 + i;
         bmodel.bookName = [NSString stringWithFormat:@"book-%zd",i];
         bmodel.price = 99.90;
         bmodel.publisher = @"prince-w";
@@ -89,7 +77,7 @@
     for (int i = 0; i < 20; i++) {
         
         dog = [DogModel new];
-        dog.number = arc4random() % 100;
+        dog.number = arc4random() % 10000;
         dog.name = @"dog2";
         dog.age = 111;
         
@@ -106,13 +94,29 @@
     
     model.dog = dog;
     
+    _textView.text = [NSString stringWithFormat:@"%@\n\n 插入一条数据...\n\n%@",_textView.text,[model dictionaryValue]];
+    [_textView scrollRangeToVisible:NSMakeRange(_textView.text.length, 1)];
+    
     [[model copy] insertToDB:^(BOOL isSuccess) {
         
         if (isSuccess) {
             NSLog(@"insertToDB isSuccess");
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //回调或者说是通知主线程刷新，
+                _textView.text = [NSString stringWithFormat:@"%@\n 插入成功...",_textView.text];
+                [_textView scrollRangeToVisible:NSMakeRange(_textView.text.length, 1)];
+            });
+            
         }
         else {
             NSLog(@"insertToDB failed");
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //回调或者说是通知主线程刷新，
+                _textView.text = [NSString stringWithFormat:@"%@\n 插入失败...",_textView.text];
+                [_textView scrollRangeToVisible:NSMakeRange(_textView.text.length, 1)];
+            });
         }
         
     }];
