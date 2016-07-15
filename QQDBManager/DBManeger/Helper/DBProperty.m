@@ -109,7 +109,7 @@
     }
     else if ([type isEqualToString:@"NSData"] ||
              [type isEqualToString:@"UIImage"]) {
-        return DB_SQL_BLOB;
+        return DB_SQL_TEXT;
     }
     else if ([type isEqualToString:@"NSArray"] ||
              [type isEqualToString:@"NSMutableArray"]) {

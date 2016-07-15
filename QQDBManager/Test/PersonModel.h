@@ -17,6 +17,7 @@
 @property (nonatomic, assign) NSInteger age;
 @property (nonatomic, assign) float height;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSData *data;
 
 
 @property (nonatomic, strong) DogModel *dog;

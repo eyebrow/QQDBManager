@@ -56,6 +56,8 @@
     model.age = 20;
     model.sex = YES;
     model.height = 180;
+    NSString *str = @"hello world";
+    model.data = [NSData dataWithBytes:str.UTF8String length:str.length];
     model.image = [UIImage imageNamed:@"2.jpg"];
     
     NSMutableArray *bookList = [NSMutableArray new];
