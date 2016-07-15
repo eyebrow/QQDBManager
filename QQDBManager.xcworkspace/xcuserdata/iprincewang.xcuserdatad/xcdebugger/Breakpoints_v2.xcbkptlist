@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QQDBManager/DBManeger/Core/DBOperation/NSObject+DBInsert.m"
-            timestampString = "490181268.655632"
+            timestampString = "490273675.847393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
             landmarkName = "+createSetKey:andSetValues:withModel:"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QQDBManager/DBManeger/Core/DBOperation/NSObject+DBInsert.m"
-            timestampString = "490182763.102379"
+            timestampString = "490273675.847393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "+createSetKey:andSetValues:withModel:"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QQDBManager/DBManeger/Core/DBOperation/NSObject+DBInsert.m"
-            timestampString = "490184172.987714"
+            timestampString = "490273675.847393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "390"
-            endingLineNumber = "390"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "+createSetKey:andSetValues:withModel:"
             landmarkType = "5">
          </BreakpointContent>

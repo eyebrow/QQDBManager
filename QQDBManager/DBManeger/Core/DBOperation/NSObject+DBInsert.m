@@ -240,9 +240,27 @@
         }
         else if (property.relationType == RelationType_expand){
             
+            id relationModel = [model valueForKey:property.name];
+            NSString *name = property.name;
+            
+            NSData *objSerialize = nil;
+            if (relationModel) {
+                objSerialize = [NSKeyedArchiver archivedDataWithRootObject:relationModel];
+            }
+            value = objSerialize;
+            if (value) {
+                [insertKey appendFormat:@"%@,", name];
+                [insertValuesStr appendString:@"?,"];
+                [insertValues addObject:value];
+            }
+            else{
+                NSLog(@"value字段值为空...");
+            }
+            
+            /*
             for (DBProperty *relationProperty in property.relationProperty) {
                 NSString *name = [NSString stringWithFormat:@"%@%@",property.name,relationProperty.name];
-                id relationModel = [model valueForKey:property.name];
+                
                 
                 if (relationModel) {
                     value = [relationModel valueForKey:relationProperty.name];
@@ -258,6 +276,7 @@
                 }
                 
             }
+             */
         }
         else{
             value = [model valueForKey:property.name];
@@ -365,6 +384,24 @@
         }
         else if (property.relationType == RelationType_expand){
             
+            id relationModel = [model valueForKey:property.name];
+            NSString *name = property.name;
+            
+            NSData *objSerialize = nil;
+            if (relationModel) {
+                objSerialize = [NSKeyedArchiver archivedDataWithRootObject:relationModel];
+            }
+            value = objSerialize;
+            
+            if (name && value) {
+                [setKey appendFormat:@"%@=?,", name];
+                [setValues addObject:value];
+            }
+            else{
+                NSLog(@"value字段值为空...");
+            }
+            
+            /*
             for (DBProperty *relationProperty in property.relationProperty) {
                 NSString *name = [NSString stringWithFormat:@"%@%@",property.name,relationProperty.name];
                 id relationModel = [model valueForKey:property.name];
@@ -381,6 +418,7 @@
                     }
                 }
             }
+             */
         }
         else{
             NSString *name = [NSString stringWithFormat:@"%@",property.name];

@@ -19,5 +19,5 @@
 #import "NSObject+DBInsert.h"
 #import "NSObject+DBSearch.h"
 #import "NSObject+Copying.h"
-#import "NSObject+coder.h"
+#import "NSObject+Coding.h"
 #import "NSObject+ModelToDictionary.h"

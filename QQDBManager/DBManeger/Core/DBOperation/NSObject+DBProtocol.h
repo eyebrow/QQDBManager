@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DBDefine.h"
+
 @class DBDatabaseQueue;
 
 @protocol DBProtocol <NSObject>
@@ -33,6 +35,9 @@
 
 /** 数组中model的类型*/
 + (NSDictionary *)DBArrayProperties;
+
+-(NSData *)DBPack;
+-(id)DBUnPack:(NSData *)data;
 
 @end
 

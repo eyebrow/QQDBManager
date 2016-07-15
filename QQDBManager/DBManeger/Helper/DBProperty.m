@@ -156,6 +156,7 @@
         }
         else{
             _relationType = RelationType_expand;
+            _dbType = DB_SQL_BLOB;
         }
     }
 }

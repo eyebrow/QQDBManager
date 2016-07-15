@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		751886B91D3633520029B2C7 /* NSObject+coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 751886B81D3633520029B2C7 /* NSObject+coder.m */; };
+		751886B91D3633520029B2C7 /* NSObject+Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = 751886B81D3633520029B2C7 /* NSObject+Coding.m */; };
 		751886BD1D36529E0029B2C7 /* NSObject+DBCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E551CE9C17700D76B91 /* NSObject+DBCreate.m */; };
 		751886C01D367A370029B2C7 /* NSObject+ModelToDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 751886BF1D367A370029B2C7 /* NSObject+ModelToDictionary.m */; };
 		751886C21D367DEB0029B2C7 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 751886C11D367DEB0029B2C7 /* 2.jpg */; };
@@ -59,8 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		751886B71D3633520029B2C7 /* NSObject+coder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+coder.h"; sourceTree = "<group>"; };
-		751886B81D3633520029B2C7 /* NSObject+coder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+coder.m"; sourceTree = "<group>"; };
+		751886B71D3633520029B2C7 /* NSObject+Coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Coding.h"; sourceTree = "<group>"; };
+		751886B81D3633520029B2C7 /* NSObject+Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Coding.m"; sourceTree = "<group>"; };
 		751886BE1D367A370029B2C7 /* NSObject+ModelToDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ModelToDictionary.h"; sourceTree = "<group>"; };
 		751886BF1D367A370029B2C7 /* NSObject+ModelToDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ModelToDictionary.m"; sourceTree = "<group>"; };
 		751886C11D367DEB0029B2C7 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
@@ -210,8 +210,8 @@
 				75B3EC151D34E282000809F0 /* NSArray+DBModel.m */,
 				75D1850E1CEC03230037CD5F /* NSObject+Copying.h */,
 				75D1850F1CEC03230037CD5F /* NSObject+Copying.m */,
-				751886B71D3633520029B2C7 /* NSObject+coder.h */,
-				751886B81D3633520029B2C7 /* NSObject+coder.m */,
+				751886B71D3633520029B2C7 /* NSObject+Coding.h */,
+				751886B81D3633520029B2C7 /* NSObject+Coding.m */,
 				751886BE1D367A370029B2C7 /* NSObject+ModelToDictionary.h */,
 				751886BF1D367A370029B2C7 /* NSObject+ModelToDictionary.m */,
 			);
@@ -539,7 +539,7 @@
 				751886C01D367A370029B2C7 /* NSObject+ModelToDictionary.m in Sources */,
 				7525D5261CE31DB9002F8153 /* DBPropertyCache.m in Sources */,
 				75744E4F1CE9752700D76B91 /* NSDate+DBModel.m in Sources */,
-				751886B91D3633520029B2C7 /* NSObject+coder.m in Sources */,
+				751886B91D3633520029B2C7 /* NSObject+Coding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

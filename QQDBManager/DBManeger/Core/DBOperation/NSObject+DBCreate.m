@@ -89,21 +89,19 @@
                 }
             }
             else if (property.relationType == RelationType_expand){
-                for (DBProperty *relationProperty in property.relationProperty) {
-                    name = [NSString stringWithFormat:@"%@%@",property.name,relationProperty.name];
+                
+                if ([db columnExists:name inTableWithName:[self DBtableName]] == NO) {
                     
-                    if ([db columnExists:name inTableWithName:[self DBtableName]] == NO) {
-                        
-                        NSLog(@"NO ColumnExists： %@ ",name);
-                        
-                        if ([self addColumn:name toTable:[self DBtableName] withType:property.dbType inDatabase:db]) {
-                            NSLog(@"addColum： %@ success",name);
-                        }
-                        else{
-                            NSLog(@"addColum： %@ failed",name);
-                        }
+                    NSLog(@"NO ColumnExists： %@ ",name);
+                    
+                    if ([self addColumn:name toTable:[self DBtableName] withType:property.dbType inDatabase:db]) {
+                        NSLog(@"addColum： %@ success",name);
+                    }
+                    else{
+                        NSLog(@"addColum： %@ failed",name);
                     }
                 }
+                
             }
         }
     }];
@@ -189,6 +187,17 @@
         }
         else if (property.relationType == RelationType_expand){
             
+            name = property.name;
+            dbType = property.dbType;
+            
+            if (name && dbType) {
+                [tableSQL appendFormat:@"%@ %@", name, dbType];
+            }
+            
+            if (self.propertys.count != i+1) {
+                [tableSQL appendString:@","];
+            }
+            /*
             for (DBProperty *relationProperty in property.relationProperty) {
                 name = [NSString stringWithFormat:@"%@%@",property.name,relationProperty.name];
                 dbType = relationProperty.dbType;
@@ -201,6 +210,7 @@
                     [tableSQL appendString:@","];
                 }
             }
+             */
             
         }
         else{

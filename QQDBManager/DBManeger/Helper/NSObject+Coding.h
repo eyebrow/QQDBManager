@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSObject (coder)
+@interface NSObject (Coding)<NSCoding>
 
 - (void)encode:(NSCoder *)aCoder;
 - (id)decode:(NSCoder *)aDecoder;

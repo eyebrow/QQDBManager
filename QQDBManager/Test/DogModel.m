@@ -39,9 +39,4 @@
 //    return YES;
 //}
 
-+(NSDictionary *)DBBeLinkedProperties
-{
-    return nil;
-}
-
 @end

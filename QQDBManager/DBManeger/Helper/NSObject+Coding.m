@@ -6,11 +6,19 @@
 //  Copyright © 2016年 com.tencent.prince. All rights reserved.
 //
 
-#import "NSObject+coder.h"
+#import "NSObject+Coding.h"
 #import "DBProperty.h"
 #import "NSObject+DBPropertys.h"
 
-@implementation NSObject (coder)
+@implementation NSObject (Coding)
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    return [self decode:aDecoder];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [self encode:aCoder];
+}
 
 // 解档方法
 - (id)decode:(NSCoder *)aDecoder {

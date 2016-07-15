@@ -124,6 +124,13 @@
             }
             else if (property.relationType == RelationType_expand){
 
+                NSData *data = [set dataForColumn:property.name];
+                
+                id relationModel = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                
+                [model setValue:relationModel forKey:property.name];
+                
+                /*
                 NSObject *relationModel = [model valueForKey:property.name];
                 if (relationModel == nil) {
                     relationModel = [[NSClassFromString(property.orignType) alloc] init];
@@ -136,6 +143,7 @@
                 }
                 
                 [model setValue:relationModel forKey:property.name];
+                 */
             }
             else{
                 [self setValueWithModel:model set:set columeName:property.name propertyName:property.name columeType:property.orignType];
