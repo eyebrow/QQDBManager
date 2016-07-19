@@ -49,6 +49,10 @@
     
     [dict setValue:@"BookModel" forKey:@"books"];
     
+    [dict setValue:@"NSString" forKey:@"stringList"];
+    
+    [dict setValue:@"NSNumber" forKey:@"numberList"];
+    
     return dict;
 }
 

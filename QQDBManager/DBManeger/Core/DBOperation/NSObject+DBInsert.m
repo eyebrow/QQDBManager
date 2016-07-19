@@ -199,6 +199,9 @@
                         valuesArray = [relationArray mutableCopy];
                     }
                 }
+                else{
+                    NSLog(@"warning：协议中的函数+(NSDictionary *)DBArrayProperties缺失NSArray中的类型...");
+                }
                 
                 NSData *objSerialize = nil;
                 if (valuesArray && [valuesArray count] > 0) {
@@ -256,27 +259,6 @@
             else{
                 NSLog(@"value字段值为空...");
             }
-            
-            /*
-            for (DBProperty *relationProperty in property.relationProperty) {
-                NSString *name = [NSString stringWithFormat:@"%@%@",property.name,relationProperty.name];
-                
-                
-                if (relationModel) {
-                    value = [relationModel valueForKey:relationProperty.name];
-                    
-                    if (value) {
-                        [insertKey appendFormat:@"%@,", name];
-                        [insertValuesStr appendString:@"?,"];
-                        [insertValues addObject:value];
-                    }
-                    else{
-                        NSLog(@"value字段值为空...");
-                    }
-                }
-                
-            }
-             */
         }
         else{
             value = [model valueForKey:property.name];
@@ -400,25 +382,6 @@
             else{
                 NSLog(@"value字段值为空...");
             }
-            
-            /*
-            for (DBProperty *relationProperty in property.relationProperty) {
-                NSString *name = [NSString stringWithFormat:@"%@%@",property.name,relationProperty.name];
-                id relationModel = [model valueForKey:property.name];
-                
-                if (relationModel) {
-                    value = [relationModel valueForKey:relationProperty.name];
-                    
-                    if (name && value) {
-                        [setKey appendFormat:@"%@=?,", name];
-                        [setValues addObject:value];
-                    }
-                    else{
-                        NSLog(@"value字段值为空...");
-                    }
-                }
-            }
-             */
         }
         else{
             NSString *name = [NSString stringWithFormat:@"%@",property.name];

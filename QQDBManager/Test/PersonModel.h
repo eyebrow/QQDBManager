@@ -21,5 +21,7 @@
 
 
 @property (nonatomic, strong) DogModel *dog;
-@property (nonatomic ,strong) NSArray *books;
+@property (nonatomic, strong) NSArray *books;
+@property (nonatomic, strong) NSArray *stringList;
+@property (nonatomic, strong) NSArray *numberList;
 @end

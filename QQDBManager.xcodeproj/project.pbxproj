@@ -13,7 +13,6 @@
 		751886C21D367DEB0029B2C7 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 751886C11D367DEB0029B2C7 /* 2.jpg */; };
 		751A538A1CDB38F70074B592 /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 751A53891CDB38F70074B592 /* PersonModel.m */; };
 		751A538D1CDB3F730074B592 /* DogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 751A538C1CDB3F730074B592 /* DogModel.m */; };
-		751A53CB1CDC45250074B592 /* QQFileHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 751A53CA1CDC45250074B592 /* QQFileHandler.m */; };
 		7525D5261CE31DB9002F8153 /* DBPropertyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7525D5211CE31DB9002F8153 /* DBPropertyCache.m */; };
 		7525D5271CE31DB9002F8153 /* NSObject+DBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7525D5231CE31DB9002F8153 /* NSObject+DBClass.m */; };
 		7525D5281CE31DB9002F8153 /* NSObject+DBPropertys.m in Sources */ = {isa = PBXBuildFile; fileRef = 7525D5251CE31DB9002F8153 /* NSObject+DBPropertys.m */; };
@@ -26,6 +25,7 @@
 		75744E611CE9C17700D76B91 /* NSObject+DBProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E591CE9C17700D76B91 /* NSObject+DBProtocol.m */; };
 		75744E621CE9C17700D76B91 /* DBDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E5C1CE9C17700D76B91 /* DBDatabaseQueue.m */; };
 		75744E631CE9C17700D76B91 /* NSObject+DbObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E5E1CE9C17700D76B91 /* NSObject+DbObject.m */; };
+		759DCAC41D3E14E2006B0562 /* QQFileHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 759DCAC31D3E14E2006B0562 /* QQFileHandler.m */; };
 		75B3EC101D349240000809F0 /* BookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B3EC0F1D349240000809F0 /* BookModel.m */; };
 		75B3EC161D34E282000809F0 /* NSArray+DBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B3EC151D34E282000809F0 /* NSArray+DBModel.m */; };
 		75D185101CEC03230037CD5F /* NSObject+Copying.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D1850F1CEC03230037CD5F /* NSObject+Copying.m */; };
@@ -68,8 +68,6 @@
 		751A53891CDB38F70074B592 /* PersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
 		751A538B1CDB3F730074B592 /* DogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DogModel.h; sourceTree = "<group>"; };
 		751A538C1CDB3F730074B592 /* DogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogModel.m; sourceTree = "<group>"; };
-		751A53C91CDC45250074B592 /* QQFileHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQFileHandler.h; sourceTree = "<group>"; };
-		751A53CA1CDC45250074B592 /* QQFileHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQFileHandler.m; sourceTree = "<group>"; };
 		751A53EF1CDC7DDD0074B592 /* DBDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBDefine.h; sourceTree = "<group>"; };
 		751A53F01CDC7DDD0074B592 /* DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBModel.h; sourceTree = "<group>"; };
 		7525D5201CE31DB9002F8153 /* DBPropertyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPropertyCache.h; sourceTree = "<group>"; };
@@ -96,6 +94,8 @@
 		75744E5C1CE9C17700D76B91 /* DBDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBDatabaseQueue.m; sourceTree = "<group>"; };
 		75744E5D1CE9C17700D76B91 /* NSObject+DbObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DbObject.h"; sourceTree = "<group>"; };
 		75744E5E1CE9C17700D76B91 /* NSObject+DbObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DbObject.m"; sourceTree = "<group>"; };
+		759DCAC21D3E14E2006B0562 /* QQFileHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQFileHandler.h; sourceTree = "<group>"; };
+		759DCAC31D3E14E2006B0562 /* QQFileHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQFileHandler.m; sourceTree = "<group>"; };
 		75B3EC0E1D349240000809F0 /* BookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookModel.h; sourceTree = "<group>"; };
 		75B3EC0F1D349240000809F0 /* BookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookModel.m; sourceTree = "<group>"; };
 		75B3EC141D34E282000809F0 /* NSArray+DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DBModel.h"; sourceTree = "<group>"; };
@@ -171,22 +171,14 @@
 			path = Test;
 			sourceTree = "<group>";
 		};
-		751A53C81CDC44FB0074B592 /* FileOperation */ = {
-			isa = PBXGroup;
-			children = (
-				751A53C91CDC45250074B592 /* QQFileHandler.h */,
-				751A53CA1CDC45250074B592 /* QQFileHandler.m */,
-			);
-			path = FileOperation;
-			sourceTree = "<group>";
-		};
 		751A53E91CDC7DDD0074B592 /* DBManeger */ = {
 			isa = PBXGroup;
 			children = (
-				751A53F01CDC7DDD0074B592 /* DBModel.h */,
-				751A53EF1CDC7DDD0074B592 /* DBDefine.h */,
 				75728EBB1CE5B4D8006D60FF /* Core */,
 				7525D51F1CE31DB9002F8153 /* Helper */,
+				759DCAC11D3E14E2006B0562 /* FileOperation */,
+				751A53F01CDC7DDD0074B592 /* DBModel.h */,
+				751A53EF1CDC7DDD0074B592 /* DBDefine.h */,
 			);
 			path = DBManeger;
 			sourceTree = "<group>";
@@ -253,6 +245,16 @@
 			path = DBQueue;
 			sourceTree = "<group>";
 		};
+		759DCAC11D3E14E2006B0562 /* FileOperation */ = {
+			isa = PBXGroup;
+			children = (
+				759DCAC21D3E14E2006B0562 /* QQFileHandler.h */,
+				759DCAC31D3E14E2006B0562 /* QQFileHandler.m */,
+			);
+			name = FileOperation;
+			path = Core/FileOperation;
+			sourceTree = "<group>";
+		};
 		75F6327C1CBF977E00CB8460 = {
 			isa = PBXGroup;
 			children = (
@@ -280,7 +282,6 @@
 			children = (
 				751886C11D367DEB0029B2C7 /* 2.jpg */,
 				751A53E91CDC7DDD0074B592 /* DBManeger */,
-				751A53C81CDC44FB0074B592 /* FileOperation */,
 				751A53871CDB38C30074B592 /* Test */,
 				75F6328B1CBF977E00CB8460 /* AppDelegate.h */,
 				75F6328C1CBF977E00CB8460 /* AppDelegate.m */,
@@ -518,11 +519,11 @@
 			files = (
 				751A538A1CDB38F70074B592 /* PersonModel.m in Sources */,
 				75B3EC161D34E282000809F0 /* NSArray+DBModel.m in Sources */,
+				759DCAC41D3E14E2006B0562 /* QQFileHandler.m in Sources */,
 				75D185101CEC03230037CD5F /* NSObject+Copying.m in Sources */,
 				75F632901CBF977E00CB8460 /* ViewController.m in Sources */,
 				7525D5281CE31DB9002F8153 /* NSObject+DBPropertys.m in Sources */,
 				75728EC71CE5B93D006D60FF /* NSString+DBModel.m in Sources */,
-				751A53CB1CDC45250074B592 /* QQFileHandler.m in Sources */,
 				75744E611CE9C17700D76B91 /* NSObject+DBProtocol.m in Sources */,
 				75F6328D1CBF977E00CB8460 /* AppDelegate.m in Sources */,
 				75B3EC101D349240000809F0 /* BookModel.m in Sources */,

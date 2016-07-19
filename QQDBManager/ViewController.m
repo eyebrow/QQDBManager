@@ -95,6 +95,9 @@
     }
     
     model.dog = dog;
+    model.stringList = [NSArray arrayWithObjects:@"prince1",@"prince2",@"prince3", nil];
+    
+    model.numberList = @[@(1),@(2),@(3),@(4)];
     
     _textView.text = [NSString stringWithFormat:@"%@\n\n 插入一条数据...\n\n%@",_textView.text,[model dictionaryValue]];
     [_textView scrollRangeToVisible:NSMakeRange(_textView.text.length, 1)];
