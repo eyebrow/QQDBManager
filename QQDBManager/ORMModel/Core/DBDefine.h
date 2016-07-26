@@ -12,6 +12,15 @@
 /** 查询数据库一页能查询到的个数 */
 #define DB_SEARCH_COUNT 10
 
+#define db_weakify(VAR) __weak __typeof__(VAR) nm_string_concat(VAR, _weak_) = (VAR)
+
+#define db_strongify(VAR) \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wshadow\"") \
+__strong __typeof__(VAR) VAR = nm_string_concat(VAR, _weak_) \
+_Pragma("clang diagnostic pop")
+
+
 /** 数据库的数据类型 */
 #define DB_SQL_TEXT @"TEXT"
 #define DB_SQL_INTEGER @"INTEGER"
@@ -27,5 +36,7 @@
 typedef void(^DBResults)(NSArray *results);
 typedef void(^DBSuccess)(BOOL isSuccess);
 typedef void(^DBCount)(int count);
+
+#define ORMModelDataBaseDir @"OrmModelDataBase"
 
 #endif /* QQDBDefine_h */

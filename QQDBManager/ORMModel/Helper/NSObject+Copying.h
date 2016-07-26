@@ -10,4 +10,6 @@
 
 @interface NSObject (Copying)<NSCopying>
 
+-(id)copyWithModel:(id)model;
+
 @end

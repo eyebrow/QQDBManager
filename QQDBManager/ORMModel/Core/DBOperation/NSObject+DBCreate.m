@@ -6,15 +6,20 @@
 //  Copyright © 2016年 com.tencent.prince. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error  does not support Objective-C Automatic Reference Counting (ARC)
+#endif
+
 #import "NSObject+DBCreate.h"
 
 #import "QQFileHandler.h"
-#import <FMDB/FMDB.h>
+#import "FMDatabase.h"
 #import "DBDatabaseQueue.h"
 #import "DBProperty.h"
 #import "NSObject+DBPropertys.h"
 #import "NSObject+DBProtocol.h"
 #import "NSString+DBModel.h"
+#import "FMDatabaseAdditions.h"
 
 /** system */
 #import <UIKit/UIKit.h>
@@ -38,30 +43,30 @@
         return;
     }
     
-    [self.dbQueue inDatabaseAsync:^(FMDatabase *db) {
+    [self.dbQueue inDatabaseSync:^(FMDatabase *db) {
         NSString *createTableSQL = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,%@)",self.DBtableName,[self appendTableSQL]];
         [db executeUpdate:createTableSQL];
         
-        [self addColomnsIfNoExist];
     }];
+    
+    [self addColomnsIfNoExist];
 }
 
 /** 添加数据库表中不存在的列*/
 + (void)addColomnsIfNoExist
 {
-    [self.dbQueue inDatabaseAsync:^(FMDatabase *db){
-       
+    [self.dbQueue inDatabaseSync:^(FMDatabase *db) {
         for (int i=0; i<self.propertys.count; i++) {
             DBProperty *property = [self.propertys objectAtIndex:i];
             
             NSString *name = property.name;
             
             if (property.relationType == RelationType_array){
-                if ([db columnExists:name inTableWithName:[self DBtableName]] == NO) {
+                if ([db columnExists:name inTableWithName:self.DBtableName] == NO) {
                     
                     NSLog(@"NO ColumnExists： %@ ",name);
                     
-                    if ([self addColumn:name toTable:[self DBtableName] withType:property.dbType inDatabase:db]) {
+                    if ([self addColumn:name toTable:self.DBtableName withType:property.dbType inDatabase:db]) {
                         NSLog(@"addColum： %@ success",name);
                     }
                     else{
@@ -71,7 +76,7 @@
             }
             else if (property.relationType == RelationType_link){
                 id relationClass = NSClassFromString(property.orignType);
-                NSString *primeKey = [relationClass DBprimaryKey];
+                NSString *primeKey = [relationClass ORMDBprimaryKey];
                 if (primeKey) {
                     name = [NSString stringWithFormat:@"%@%@",property.name,primeKey];
                 }
@@ -105,7 +110,6 @@
             }
         }
     }];
-    
 }
 
 + (BOOL)addColumn:(NSString*)columnName toTable:(NSString *)tableName withType:(NSString *)type inDatabase:(FMDatabase *)db
@@ -160,7 +164,7 @@
         }
         else if (property.relationType == RelationType_link) {
             id relationClass = NSClassFromString(property.orignType);
-             NSString *primeKey = [relationClass DBprimaryKey];
+             NSString *primeKey = [relationClass ORMDBprimaryKey];
             
             DBProperty *relationProperty = nil;
             if (primeKey) {

@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import <objc/runtime.h>
 #import "PersonModel.h"
-#import "DBManeger/DBModel.h"
+#import "ORMModel/ORMModel.h"
 
 #import "DogModel.h"
 #import "BookModel.h"
@@ -83,7 +83,7 @@
         dog.name = @"dog2";
         dog.age = 111;
         
-        [[dog copy] insertToDB:^(BOOL isSuccess) {
+        [dog insertToDBFinished:^(BOOL isSuccess) {
             
             if (isSuccess) {
                 NSLog(@"insertToDB isSuccess");
@@ -102,7 +102,7 @@
     _textView.text = [NSString stringWithFormat:@"%@\n\n 插入一条数据...\n\n%@",_textView.text,[model dictionaryValue]];
     [_textView scrollRangeToVisible:NSMakeRange(_textView.text.length, 1)];
     
-    [[model copy] insertToDB:^(BOOL isSuccess) {
+    [model insertToDBFinished:^(BOOL isSuccess) {
         
         if (isSuccess) {
             NSLog(@"insertToDB isSuccess");
@@ -145,6 +145,18 @@
 {
     [PersonModel searchAll:^(NSArray *results) {
         
+        NSArray *tmpArry = [results copy];
+        
+        for (PersonModel *model in tmpArry) {
+            NSLog(@"model... :%@",model);
+            
+            NSDictionary *dict = [model dictionaryValue];
+            
+            NSLog(@"dict... :%@",dict);
+        }
+    }];
+    
+    [PersonModel searchAllWhere:@"uin=93" results:^(NSArray *results) {
         NSArray *tmpArry = [results copy];
         
         for (PersonModel *model in tmpArry) {

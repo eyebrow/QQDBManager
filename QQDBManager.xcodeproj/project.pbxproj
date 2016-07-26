@@ -7,28 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		751886B91D3633520029B2C7 /* NSObject+Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = 751886B81D3633520029B2C7 /* NSObject+Coding.m */; };
-		751886BD1D36529E0029B2C7 /* NSObject+DBCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E551CE9C17700D76B91 /* NSObject+DBCreate.m */; };
-		751886C01D367A370029B2C7 /* NSObject+ModelToDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 751886BF1D367A370029B2C7 /* NSObject+ModelToDictionary.m */; };
 		751886C21D367DEB0029B2C7 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 751886C11D367DEB0029B2C7 /* 2.jpg */; };
 		751A538A1CDB38F70074B592 /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 751A53891CDB38F70074B592 /* PersonModel.m */; };
 		751A538D1CDB3F730074B592 /* DogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 751A538C1CDB3F730074B592 /* DogModel.m */; };
-		7525D5261CE31DB9002F8153 /* DBPropertyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7525D5211CE31DB9002F8153 /* DBPropertyCache.m */; };
-		7525D5271CE31DB9002F8153 /* NSObject+DBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7525D5231CE31DB9002F8153 /* NSObject+DBClass.m */; };
-		7525D5281CE31DB9002F8153 /* NSObject+DBPropertys.m in Sources */ = {isa = PBXBuildFile; fileRef = 7525D5251CE31DB9002F8153 /* NSObject+DBPropertys.m */; };
-		7525D52B1CE31DF2002F8153 /* DBProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 7525D52A1CE31DF2002F8153 /* DBProperty.m */; };
-		754D40541CEB1F56005C7136 /* NSObject+DBSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 754D40531CEB1F56005C7136 /* NSObject+DBSearch.m */; };
-		75728EC71CE5B93D006D60FF /* NSString+DBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75728EC61CE5B93D006D60FF /* NSString+DBModel.m */; };
-		75744E4F1CE9752700D76B91 /* NSDate+DBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E4E1CE9752700D76B91 /* NSDate+DBModel.m */; };
-		75744E5F1CE9C17700D76B91 /* NSObject+DBCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E551CE9C17700D76B91 /* NSObject+DBCreate.m */; };
-		75744E601CE9C17700D76B91 /* NSObject+DBInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E571CE9C17700D76B91 /* NSObject+DBInsert.m */; };
-		75744E611CE9C17700D76B91 /* NSObject+DBProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E591CE9C17700D76B91 /* NSObject+DBProtocol.m */; };
-		75744E621CE9C17700D76B91 /* DBDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E5C1CE9C17700D76B91 /* DBDatabaseQueue.m */; };
-		75744E631CE9C17700D76B91 /* NSObject+DbObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 75744E5E1CE9C17700D76B91 /* NSObject+DbObject.m */; };
-		759DCAC41D3E14E2006B0562 /* QQFileHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 759DCAC31D3E14E2006B0562 /* QQFileHandler.m */; };
+		7595AA441D41F5E400A9CF46 /* NSObject+DBCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA1F1D41F5E400A9CF46 /* NSObject+DBCreate.m */; };
+		7595AA451D41F5E400A9CF46 /* NSObject+DBInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA211D41F5E400A9CF46 /* NSObject+DBInsert.m */; };
+		7595AA461D41F5E400A9CF46 /* NSObject+DBProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA231D41F5E400A9CF46 /* NSObject+DBProtocol.m */; };
+		7595AA471D41F5E400A9CF46 /* NSObject+DBSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA251D41F5E400A9CF46 /* NSObject+DBSearch.m */; };
+		7595AA481D41F5E400A9CF46 /* DBDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA281D41F5E400A9CF46 /* DBDatabaseQueue.m */; };
+		7595AA491D41F5E400A9CF46 /* NSObject+DbObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA2A1D41F5E400A9CF46 /* NSObject+DbObject.m */; };
+		7595AA4A1D41F5E400A9CF46 /* QQFileHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA2D1D41F5E400A9CF46 /* QQFileHandler.m */; };
+		7595AA4B1D41F5E400A9CF46 /* DBProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA301D41F5E400A9CF46 /* DBProperty.m */; };
+		7595AA4C1D41F5E400A9CF46 /* DBPropertyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA321D41F5E400A9CF46 /* DBPropertyCache.m */; };
+		7595AA4D1D41F5E400A9CF46 /* NSArray+DBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA341D41F5E400A9CF46 /* NSArray+DBModel.m */; };
+		7595AA4E1D41F5E400A9CF46 /* NSDate+DBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA361D41F5E400A9CF46 /* NSDate+DBModel.m */; };
+		7595AA4F1D41F5E400A9CF46 /* NSObject+Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA381D41F5E400A9CF46 /* NSObject+Coding.m */; };
+		7595AA501D41F5E400A9CF46 /* NSObject+Copying.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA3A1D41F5E400A9CF46 /* NSObject+Copying.m */; };
+		7595AA511D41F5E400A9CF46 /* NSObject+DBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA3C1D41F5E400A9CF46 /* NSObject+DBClass.m */; };
+		7595AA521D41F5E400A9CF46 /* NSObject+DBPropertys.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA3E1D41F5E400A9CF46 /* NSObject+DBPropertys.m */; };
+		7595AA531D41F5E400A9CF46 /* NSObject+ModelToDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA401D41F5E400A9CF46 /* NSObject+ModelToDictionary.m */; };
+		7595AA541D41F5E400A9CF46 /* NSString+DBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595AA421D41F5E400A9CF46 /* NSString+DBModel.m */; };
 		75B3EC101D349240000809F0 /* BookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B3EC0F1D349240000809F0 /* BookModel.m */; };
-		75B3EC161D34E282000809F0 /* NSArray+DBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B3EC151D34E282000809F0 /* NSArray+DBModel.m */; };
-		75D185101CEC03230037CD5F /* NSObject+Copying.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D1850F1CEC03230037CD5F /* NSObject+Copying.m */; };
 		75F6328A1CBF977E00CB8460 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F632891CBF977E00CB8460 /* main.m */; };
 		75F6328D1CBF977E00CB8460 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F6328C1CBF977E00CB8460 /* AppDelegate.m */; };
 		75F632901CBF977E00CB8460 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F6328F1CBF977E00CB8460 /* ViewController.m */; };
@@ -59,49 +58,49 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		751886B71D3633520029B2C7 /* NSObject+Coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Coding.h"; sourceTree = "<group>"; };
-		751886B81D3633520029B2C7 /* NSObject+Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Coding.m"; sourceTree = "<group>"; };
-		751886BE1D367A370029B2C7 /* NSObject+ModelToDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ModelToDictionary.h"; sourceTree = "<group>"; };
-		751886BF1D367A370029B2C7 /* NSObject+ModelToDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ModelToDictionary.m"; sourceTree = "<group>"; };
 		751886C11D367DEB0029B2C7 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		751A53881CDB38F70074B592 /* PersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
 		751A53891CDB38F70074B592 /* PersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
 		751A538B1CDB3F730074B592 /* DogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DogModel.h; sourceTree = "<group>"; };
 		751A538C1CDB3F730074B592 /* DogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogModel.m; sourceTree = "<group>"; };
-		751A53EF1CDC7DDD0074B592 /* DBDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBDefine.h; sourceTree = "<group>"; };
-		751A53F01CDC7DDD0074B592 /* DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBModel.h; sourceTree = "<group>"; };
-		7525D5201CE31DB9002F8153 /* DBPropertyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPropertyCache.h; sourceTree = "<group>"; };
-		7525D5211CE31DB9002F8153 /* DBPropertyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPropertyCache.m; sourceTree = "<group>"; };
-		7525D5221CE31DB9002F8153 /* NSObject+DBClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBClass.h"; sourceTree = "<group>"; };
-		7525D5231CE31DB9002F8153 /* NSObject+DBClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBClass.m"; sourceTree = "<group>"; };
-		7525D5241CE31DB9002F8153 /* NSObject+DBPropertys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBPropertys.h"; sourceTree = "<group>"; };
-		7525D5251CE31DB9002F8153 /* NSObject+DBPropertys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBPropertys.m"; sourceTree = "<group>"; };
-		7525D5291CE31DF2002F8153 /* DBProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBProperty.h; sourceTree = "<group>"; };
-		7525D52A1CE31DF2002F8153 /* DBProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBProperty.m; sourceTree = "<group>"; };
-		754D40521CEB1F56005C7136 /* NSObject+DBSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBSearch.h"; sourceTree = "<group>"; };
-		754D40531CEB1F56005C7136 /* NSObject+DBSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBSearch.m"; sourceTree = "<group>"; };
-		75728EC51CE5B93D006D60FF /* NSString+DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DBModel.h"; sourceTree = "<group>"; };
-		75728EC61CE5B93D006D60FF /* NSString+DBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DBModel.m"; sourceTree = "<group>"; };
-		75744E4D1CE9752700D76B91 /* NSDate+DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DBModel.h"; sourceTree = "<group>"; };
-		75744E4E1CE9752700D76B91 /* NSDate+DBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DBModel.m"; sourceTree = "<group>"; };
-		75744E541CE9C17700D76B91 /* NSObject+DBCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBCreate.h"; sourceTree = "<group>"; };
-		75744E551CE9C17700D76B91 /* NSObject+DBCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBCreate.m"; sourceTree = "<group>"; };
-		75744E561CE9C17700D76B91 /* NSObject+DBInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBInsert.h"; sourceTree = "<group>"; };
-		75744E571CE9C17700D76B91 /* NSObject+DBInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBInsert.m"; sourceTree = "<group>"; };
-		75744E581CE9C17700D76B91 /* NSObject+DBProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBProtocol.h"; sourceTree = "<group>"; };
-		75744E591CE9C17700D76B91 /* NSObject+DBProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBProtocol.m"; sourceTree = "<group>"; };
-		75744E5B1CE9C17700D76B91 /* DBDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBDatabaseQueue.h; sourceTree = "<group>"; };
-		75744E5C1CE9C17700D76B91 /* DBDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBDatabaseQueue.m; sourceTree = "<group>"; };
-		75744E5D1CE9C17700D76B91 /* NSObject+DbObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DbObject.h"; sourceTree = "<group>"; };
-		75744E5E1CE9C17700D76B91 /* NSObject+DbObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DbObject.m"; sourceTree = "<group>"; };
-		759DCAC21D3E14E2006B0562 /* QQFileHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQFileHandler.h; sourceTree = "<group>"; };
-		759DCAC31D3E14E2006B0562 /* QQFileHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQFileHandler.m; sourceTree = "<group>"; };
+		7595AA1C1D41F5E400A9CF46 /* DBDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBDefine.h; sourceTree = "<group>"; };
+		7595AA1E1D41F5E400A9CF46 /* NSObject+DBCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBCreate.h"; sourceTree = "<group>"; };
+		7595AA1F1D41F5E400A9CF46 /* NSObject+DBCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBCreate.m"; sourceTree = "<group>"; };
+		7595AA201D41F5E400A9CF46 /* NSObject+DBInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBInsert.h"; sourceTree = "<group>"; };
+		7595AA211D41F5E400A9CF46 /* NSObject+DBInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBInsert.m"; sourceTree = "<group>"; };
+		7595AA221D41F5E400A9CF46 /* NSObject+DBProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBProtocol.h"; sourceTree = "<group>"; };
+		7595AA231D41F5E400A9CF46 /* NSObject+DBProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBProtocol.m"; sourceTree = "<group>"; };
+		7595AA241D41F5E400A9CF46 /* NSObject+DBSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBSearch.h"; sourceTree = "<group>"; };
+		7595AA251D41F5E400A9CF46 /* NSObject+DBSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBSearch.m"; sourceTree = "<group>"; };
+		7595AA271D41F5E400A9CF46 /* DBDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBDatabaseQueue.h; sourceTree = "<group>"; };
+		7595AA281D41F5E400A9CF46 /* DBDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBDatabaseQueue.m; sourceTree = "<group>"; };
+		7595AA291D41F5E400A9CF46 /* NSObject+DbObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DbObject.h"; sourceTree = "<group>"; };
+		7595AA2A1D41F5E400A9CF46 /* NSObject+DbObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DbObject.m"; sourceTree = "<group>"; };
+		7595AA2C1D41F5E400A9CF46 /* QQFileHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQFileHandler.h; sourceTree = "<group>"; };
+		7595AA2D1D41F5E400A9CF46 /* QQFileHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQFileHandler.m; sourceTree = "<group>"; };
+		7595AA2F1D41F5E400A9CF46 /* DBProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBProperty.h; sourceTree = "<group>"; };
+		7595AA301D41F5E400A9CF46 /* DBProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBProperty.m; sourceTree = "<group>"; };
+		7595AA311D41F5E400A9CF46 /* DBPropertyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPropertyCache.h; sourceTree = "<group>"; };
+		7595AA321D41F5E400A9CF46 /* DBPropertyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPropertyCache.m; sourceTree = "<group>"; };
+		7595AA331D41F5E400A9CF46 /* NSArray+DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DBModel.h"; sourceTree = "<group>"; };
+		7595AA341D41F5E400A9CF46 /* NSArray+DBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DBModel.m"; sourceTree = "<group>"; };
+		7595AA351D41F5E400A9CF46 /* NSDate+DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DBModel.h"; sourceTree = "<group>"; };
+		7595AA361D41F5E400A9CF46 /* NSDate+DBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DBModel.m"; sourceTree = "<group>"; };
+		7595AA371D41F5E400A9CF46 /* NSObject+Coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Coding.h"; sourceTree = "<group>"; };
+		7595AA381D41F5E400A9CF46 /* NSObject+Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Coding.m"; sourceTree = "<group>"; };
+		7595AA391D41F5E400A9CF46 /* NSObject+Copying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Copying.h"; sourceTree = "<group>"; };
+		7595AA3A1D41F5E400A9CF46 /* NSObject+Copying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Copying.m"; sourceTree = "<group>"; };
+		7595AA3B1D41F5E400A9CF46 /* NSObject+DBClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBClass.h"; sourceTree = "<group>"; };
+		7595AA3C1D41F5E400A9CF46 /* NSObject+DBClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBClass.m"; sourceTree = "<group>"; };
+		7595AA3D1D41F5E400A9CF46 /* NSObject+DBPropertys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBPropertys.h"; sourceTree = "<group>"; };
+		7595AA3E1D41F5E400A9CF46 /* NSObject+DBPropertys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBPropertys.m"; sourceTree = "<group>"; };
+		7595AA3F1D41F5E400A9CF46 /* NSObject+ModelToDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ModelToDictionary.h"; sourceTree = "<group>"; };
+		7595AA401D41F5E400A9CF46 /* NSObject+ModelToDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ModelToDictionary.m"; sourceTree = "<group>"; };
+		7595AA411D41F5E400A9CF46 /* NSString+DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DBModel.h"; sourceTree = "<group>"; };
+		7595AA421D41F5E400A9CF46 /* NSString+DBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DBModel.m"; sourceTree = "<group>"; };
+		7595AA431D41F5E400A9CF46 /* ORMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORMModel.h; sourceTree = "<group>"; };
 		75B3EC0E1D349240000809F0 /* BookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookModel.h; sourceTree = "<group>"; };
 		75B3EC0F1D349240000809F0 /* BookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookModel.m; sourceTree = "<group>"; };
-		75B3EC141D34E282000809F0 /* NSArray+DBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DBModel.h"; sourceTree = "<group>"; };
-		75B3EC151D34E282000809F0 /* NSArray+DBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DBModel.m"; sourceTree = "<group>"; };
-		75D1850E1CEC03230037CD5F /* NSObject+Copying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Copying.h"; sourceTree = "<group>"; };
-		75D1850F1CEC03230037CD5F /* NSObject+Copying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Copying.m"; sourceTree = "<group>"; };
 		75F632851CBF977E00CB8460 /* QQDBManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QQDBManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F632891CBF977E00CB8460 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75F6328B1CBF977E00CB8460 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -171,88 +170,87 @@
 			path = Test;
 			sourceTree = "<group>";
 		};
-		751A53E91CDC7DDD0074B592 /* DBManeger */ = {
+		7595AA1A1D41F5E400A9CF46 /* ORMModel */ = {
 			isa = PBXGroup;
 			children = (
-				75728EBB1CE5B4D8006D60FF /* Core */,
-				7525D51F1CE31DB9002F8153 /* Helper */,
-				759DCAC11D3E14E2006B0562 /* FileOperation */,
-				751A53F01CDC7DDD0074B592 /* DBModel.h */,
-				751A53EF1CDC7DDD0074B592 /* DBDefine.h */,
+				7595AA1B1D41F5E400A9CF46 /* Core */,
+				7595AA2B1D41F5E400A9CF46 /* FileOperation */,
+				7595AA2E1D41F5E400A9CF46 /* Helper */,
+				7595AA431D41F5E400A9CF46 /* ORMModel.h */,
 			);
-			path = DBManeger;
+			path = ORMModel;
 			sourceTree = "<group>";
 		};
-		7525D51F1CE31DB9002F8153 /* Helper */ = {
+		7595AA1B1D41F5E400A9CF46 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				7525D5291CE31DF2002F8153 /* DBProperty.h */,
-				7525D52A1CE31DF2002F8153 /* DBProperty.m */,
-				7525D5201CE31DB9002F8153 /* DBPropertyCache.h */,
-				7525D5211CE31DB9002F8153 /* DBPropertyCache.m */,
-				7525D5221CE31DB9002F8153 /* NSObject+DBClass.h */,
-				7525D5231CE31DB9002F8153 /* NSObject+DBClass.m */,
-				7525D5241CE31DB9002F8153 /* NSObject+DBPropertys.h */,
-				7525D5251CE31DB9002F8153 /* NSObject+DBPropertys.m */,
-				75728EC51CE5B93D006D60FF /* NSString+DBModel.h */,
-				75728EC61CE5B93D006D60FF /* NSString+DBModel.m */,
-				75744E4D1CE9752700D76B91 /* NSDate+DBModel.h */,
-				75744E4E1CE9752700D76B91 /* NSDate+DBModel.m */,
-				75B3EC141D34E282000809F0 /* NSArray+DBModel.h */,
-				75B3EC151D34E282000809F0 /* NSArray+DBModel.m */,
-				75D1850E1CEC03230037CD5F /* NSObject+Copying.h */,
-				75D1850F1CEC03230037CD5F /* NSObject+Copying.m */,
-				751886B71D3633520029B2C7 /* NSObject+Coding.h */,
-				751886B81D3633520029B2C7 /* NSObject+Coding.m */,
-				751886BE1D367A370029B2C7 /* NSObject+ModelToDictionary.h */,
-				751886BF1D367A370029B2C7 /* NSObject+ModelToDictionary.m */,
-			);
-			path = Helper;
-			sourceTree = "<group>";
-		};
-		75728EBB1CE5B4D8006D60FF /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				75744E5A1CE9C17700D76B91 /* DBQueue */,
-				75744E531CE9C17700D76B91 /* DBOperation */,
+				7595AA1C1D41F5E400A9CF46 /* DBDefine.h */,
+				7595AA1D1D41F5E400A9CF46 /* DBOperation */,
+				7595AA261D41F5E400A9CF46 /* DBQueue */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		75744E531CE9C17700D76B91 /* DBOperation */ = {
+		7595AA1D1D41F5E400A9CF46 /* DBOperation */ = {
 			isa = PBXGroup;
 			children = (
-				75744E541CE9C17700D76B91 /* NSObject+DBCreate.h */,
-				75744E551CE9C17700D76B91 /* NSObject+DBCreate.m */,
-				75744E561CE9C17700D76B91 /* NSObject+DBInsert.h */,
-				75744E571CE9C17700D76B91 /* NSObject+DBInsert.m */,
-				75744E581CE9C17700D76B91 /* NSObject+DBProtocol.h */,
-				75744E591CE9C17700D76B91 /* NSObject+DBProtocol.m */,
-				754D40521CEB1F56005C7136 /* NSObject+DBSearch.h */,
-				754D40531CEB1F56005C7136 /* NSObject+DBSearch.m */,
+				7595AA1E1D41F5E400A9CF46 /* NSObject+DBCreate.h */,
+				7595AA1F1D41F5E400A9CF46 /* NSObject+DBCreate.m */,
+				7595AA201D41F5E400A9CF46 /* NSObject+DBInsert.h */,
+				7595AA211D41F5E400A9CF46 /* NSObject+DBInsert.m */,
+				7595AA221D41F5E400A9CF46 /* NSObject+DBProtocol.h */,
+				7595AA231D41F5E400A9CF46 /* NSObject+DBProtocol.m */,
+				7595AA241D41F5E400A9CF46 /* NSObject+DBSearch.h */,
+				7595AA251D41F5E400A9CF46 /* NSObject+DBSearch.m */,
 			);
 			path = DBOperation;
 			sourceTree = "<group>";
 		};
-		75744E5A1CE9C17700D76B91 /* DBQueue */ = {
+		7595AA261D41F5E400A9CF46 /* DBQueue */ = {
 			isa = PBXGroup;
 			children = (
-				75744E5B1CE9C17700D76B91 /* DBDatabaseQueue.h */,
-				75744E5C1CE9C17700D76B91 /* DBDatabaseQueue.m */,
-				75744E5D1CE9C17700D76B91 /* NSObject+DbObject.h */,
-				75744E5E1CE9C17700D76B91 /* NSObject+DbObject.m */,
+				7595AA271D41F5E400A9CF46 /* DBDatabaseQueue.h */,
+				7595AA281D41F5E400A9CF46 /* DBDatabaseQueue.m */,
+				7595AA291D41F5E400A9CF46 /* NSObject+DbObject.h */,
+				7595AA2A1D41F5E400A9CF46 /* NSObject+DbObject.m */,
 			);
 			path = DBQueue;
 			sourceTree = "<group>";
 		};
-		759DCAC11D3E14E2006B0562 /* FileOperation */ = {
+		7595AA2B1D41F5E400A9CF46 /* FileOperation */ = {
 			isa = PBXGroup;
 			children = (
-				759DCAC21D3E14E2006B0562 /* QQFileHandler.h */,
-				759DCAC31D3E14E2006B0562 /* QQFileHandler.m */,
+				7595AA2C1D41F5E400A9CF46 /* QQFileHandler.h */,
+				7595AA2D1D41F5E400A9CF46 /* QQFileHandler.m */,
 			);
-			name = FileOperation;
-			path = Core/FileOperation;
+			path = FileOperation;
+			sourceTree = "<group>";
+		};
+		7595AA2E1D41F5E400A9CF46 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7595AA2F1D41F5E400A9CF46 /* DBProperty.h */,
+				7595AA301D41F5E400A9CF46 /* DBProperty.m */,
+				7595AA311D41F5E400A9CF46 /* DBPropertyCache.h */,
+				7595AA321D41F5E400A9CF46 /* DBPropertyCache.m */,
+				7595AA331D41F5E400A9CF46 /* NSArray+DBModel.h */,
+				7595AA341D41F5E400A9CF46 /* NSArray+DBModel.m */,
+				7595AA351D41F5E400A9CF46 /* NSDate+DBModel.h */,
+				7595AA361D41F5E400A9CF46 /* NSDate+DBModel.m */,
+				7595AA371D41F5E400A9CF46 /* NSObject+Coding.h */,
+				7595AA381D41F5E400A9CF46 /* NSObject+Coding.m */,
+				7595AA391D41F5E400A9CF46 /* NSObject+Copying.h */,
+				7595AA3A1D41F5E400A9CF46 /* NSObject+Copying.m */,
+				7595AA3B1D41F5E400A9CF46 /* NSObject+DBClass.h */,
+				7595AA3C1D41F5E400A9CF46 /* NSObject+DBClass.m */,
+				7595AA3D1D41F5E400A9CF46 /* NSObject+DBPropertys.h */,
+				7595AA3E1D41F5E400A9CF46 /* NSObject+DBPropertys.m */,
+				7595AA3F1D41F5E400A9CF46 /* NSObject+ModelToDictionary.h */,
+				7595AA401D41F5E400A9CF46 /* NSObject+ModelToDictionary.m */,
+				7595AA411D41F5E400A9CF46 /* NSString+DBModel.h */,
+				7595AA421D41F5E400A9CF46 /* NSString+DBModel.m */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		75F6327C1CBF977E00CB8460 = {
@@ -280,8 +278,8 @@
 		75F632871CBF977E00CB8460 /* QQDBManager */ = {
 			isa = PBXGroup;
 			children = (
+				7595AA1A1D41F5E400A9CF46 /* ORMModel */,
 				751886C11D367DEB0029B2C7 /* 2.jpg */,
-				751A53E91CDC7DDD0074B592 /* DBManeger */,
 				751A53871CDB38C30074B592 /* Test */,
 				75F6328B1CBF977E00CB8460 /* AppDelegate.h */,
 				75F6328C1CBF977E00CB8460 /* AppDelegate.m */,
@@ -517,30 +515,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7595AA531D41F5E400A9CF46 /* NSObject+ModelToDictionary.m in Sources */,
+				7595AA481D41F5E400A9CF46 /* DBDatabaseQueue.m in Sources */,
+				7595AA501D41F5E400A9CF46 /* NSObject+Copying.m in Sources */,
 				751A538A1CDB38F70074B592 /* PersonModel.m in Sources */,
-				75B3EC161D34E282000809F0 /* NSArray+DBModel.m in Sources */,
-				759DCAC41D3E14E2006B0562 /* QQFileHandler.m in Sources */,
-				75D185101CEC03230037CD5F /* NSObject+Copying.m in Sources */,
+				7595AA4A1D41F5E400A9CF46 /* QQFileHandler.m in Sources */,
 				75F632901CBF977E00CB8460 /* ViewController.m in Sources */,
-				7525D5281CE31DB9002F8153 /* NSObject+DBPropertys.m in Sources */,
-				75728EC71CE5B93D006D60FF /* NSString+DBModel.m in Sources */,
-				75744E611CE9C17700D76B91 /* NSObject+DBProtocol.m in Sources */,
 				75F6328D1CBF977E00CB8460 /* AppDelegate.m in Sources */,
+				7595AA541D41F5E400A9CF46 /* NSString+DBModel.m in Sources */,
+				7595AA451D41F5E400A9CF46 /* NSObject+DBInsert.m in Sources */,
+				7595AA441D41F5E400A9CF46 /* NSObject+DBCreate.m in Sources */,
+				7595AA461D41F5E400A9CF46 /* NSObject+DBProtocol.m in Sources */,
+				7595AA4D1D41F5E400A9CF46 /* NSArray+DBModel.m in Sources */,
+				7595AA521D41F5E400A9CF46 /* NSObject+DBPropertys.m in Sources */,
+				7595AA491D41F5E400A9CF46 /* NSObject+DbObject.m in Sources */,
 				75B3EC101D349240000809F0 /* BookModel.m in Sources */,
-				754D40541CEB1F56005C7136 /* NSObject+DBSearch.m in Sources */,
+				7595AA511D41F5E400A9CF46 /* NSObject+DBClass.m in Sources */,
+				7595AA4B1D41F5E400A9CF46 /* DBProperty.m in Sources */,
+				7595AA4C1D41F5E400A9CF46 /* DBPropertyCache.m in Sources */,
 				75F6328A1CBF977E00CB8460 /* main.m in Sources */,
 				75F632961CBF977E00CB8460 /* QQDBManager.xcdatamodeld in Sources */,
-				75744E621CE9C17700D76B91 /* DBDatabaseQueue.m in Sources */,
+				7595AA471D41F5E400A9CF46 /* NSObject+DBSearch.m in Sources */,
+				7595AA4E1D41F5E400A9CF46 /* NSDate+DBModel.m in Sources */,
 				751A538D1CDB3F730074B592 /* DogModel.m in Sources */,
-				7525D5271CE31DB9002F8153 /* NSObject+DBClass.m in Sources */,
-				75744E601CE9C17700D76B91 /* NSObject+DBInsert.m in Sources */,
-				7525D52B1CE31DF2002F8153 /* DBProperty.m in Sources */,
-				75744E5F1CE9C17700D76B91 /* NSObject+DBCreate.m in Sources */,
-				75744E631CE9C17700D76B91 /* NSObject+DbObject.m in Sources */,
-				751886C01D367A370029B2C7 /* NSObject+ModelToDictionary.m in Sources */,
-				7525D5261CE31DB9002F8153 /* DBPropertyCache.m in Sources */,
-				75744E4F1CE9752700D76B91 /* NSDate+DBModel.m in Sources */,
-				751886B91D3633520029B2C7 /* NSObject+Coding.m in Sources */,
+				7595AA4F1D41F5E400A9CF46 /* NSObject+Coding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,7 +547,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				75F632A61CBF977E00CB8460 /* QQDBManagerTests.m in Sources */,
-				751886BD1D36529E0029B2C7 /* NSObject+DBCreate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

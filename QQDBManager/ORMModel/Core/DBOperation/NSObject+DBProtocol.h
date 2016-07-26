@@ -16,32 +16,32 @@
 @optional
 
 /** 返回表名 */
-+ (NSString *)DBtableName;
++ (NSString *)ORMDBTableName;
 
 /** 返回数据库路径 */
-+ (NSString *)DBdatabasePath;
++ (NSString *)ORMDBPath;
 
 /** 不需要入库的字段*/
-+ (NSArray *)DBIgnoredProperties;
++ (NSArray *)ORMDBIgnoredProperties;
 
 /** 设定主键,返回属性名组成的NSString*/
-+ (NSString *)DBprimaryKey;
++ (NSString *)ORMDBprimaryKey;
 
 /** 是否被其他model 链接 */
-+ (BOOL)DBNeedBeLinked;
++ (BOOL)ORMDBNeedBeLinked;
 
 /** 被其他model链接的属性*/
-+ (NSDictionary *)DBBeLinkedProperties;
++ (NSDictionary *)ORMDBBeLinkedProperties;
 
 /** 数组中model的类型*/
-+ (NSDictionary *)DBArrayProperties;
-
--(NSData *)DBPack;
--(id)DBUnPack:(NSData *)data;
++ (NSDictionary *)ORMDBArrayProperties;
 
 @end
 
 @interface NSObject (DBProtocol) <DBProtocol>
+
++ (NSString *)DBtableName;
++ (void)setDBtableName:(const NSString *)name;
 
 /** 数据库操作队列 */
 + (DBDatabaseQueue *)dbQueue;

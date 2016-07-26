@@ -7,7 +7,7 @@
 //
 
 #import "BookModel.h"
-#import "DBModel.h"
+#import "ORMModel.h"
 
 @implementation BookModel
 
@@ -23,17 +23,17 @@
 //}
 
 
-+(NSString *)DBtableName
++(NSString *)ORMDBTableName
 {
     return @"BookTable";
 }
 
-+(NSString *)DBprimaryKey
++(NSString *)ORMDBprimaryKey
 {
     return @"bookId";
 }
 
-+(BOOL)DBNeedBeLinked
++(BOOL)ORMDBNeedBeLinked
 {
     return YES;
 }

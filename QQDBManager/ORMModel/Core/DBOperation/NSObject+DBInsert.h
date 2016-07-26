@@ -19,7 +19,7 @@
  *  @param model model
  *  @param block block
  */
-- (void)insertToDB:(DBSuccess)block;
+- (void)insertToDBFinished:(DBSuccess)block;
 
 /**
  *  把model插入到数据库,如果存在(用primaryKey来判断),就更新(通过rowid或者primarykey来更新)
@@ -27,6 +27,6 @@
  *  @param model model
  *  @param block block
  */
-- (void)insertUpdateToDB:(DBSuccess)block;
+- (void)insertToDB:(NSString *)tableName finished:(DBSuccess)block;
 
 @end

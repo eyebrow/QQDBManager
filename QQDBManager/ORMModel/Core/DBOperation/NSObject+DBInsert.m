@@ -6,8 +6,12 @@
 //  Copyright © 2016年 com.tencent.prince. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error  does not support Objective-C Automatic Reference Counting (ARC)
+#endif
+
 #import "NSObject+DBInsert.h"
-#import <FMDB/FMDB.h>
+#import "FMDatabase.h"
 #import "DBProperty.h"
 #import "NSObject+DbObject.h"
 #import "NSObject+DBProtocol.h"
@@ -19,25 +23,38 @@
 
 #pragma mark Insert model
 
-- (void)insertToDB:(DBSuccess)block {
+- (void)insertToDBFinished:(DBSuccess)block {
+    
+    NSString *tableName = [self.class ORMDBTableName];
+    
+    [self insertToDB:tableName finished:block];
+}
 
-    self.primaryKey = [self.class DBprimaryKey];
+-(void)insertToDB:(NSString *)tableName finished:(DBSuccess)block
+{
+    self.primaryKey = [self.class ORMDBprimaryKey];
+    
+    [self.class setDBtableName:tableName];
     
     if (self.primaryKey) {
         [self insertUpdateToDB:block];
     }
     else{
         [self.class.dbQueue inDatabaseAsync:^(FMDatabase *db) {
-            
             [self executeInsertToDB:db result:block];
         }];
     }
-    
 }
+
+#pragma mark Private mothod
 
 - (void)insertUpdateToDB:(DBSuccess)block {
     
-    self.primaryKey = [self.class DBprimaryKey];
+    if ([self.class ORMDBTableName]) {
+        [self.class setDBtableName:[self.class ORMDBTableName]];
+    }
+    
+    self.primaryKey = [self.class ORMDBprimaryKey];
     [self.class.dbQueue inDatabaseAsync:^(FMDatabase *db) {
         BOOL isExists = [self executeIsExistsToDB:db result:nil];
         if (isExists) {
@@ -63,7 +80,9 @@
     [self.class createInsertKey:insertKey insertValuesStr:insertValuesStr insertValues:insertValues model:self];
     
     NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO %@(%@) VALUES(%@)", self.class.DBtableName, insertKey, insertValuesStr];
-    BOOL execute = [db executeUpdate:insertSQL withArgumentsInArray:insertValues];
+    NSArray *insertValuesArray = [NSArray arrayWithArray:insertValues];
+    
+    BOOL execute = [db executeUpdate:insertSQL withArgumentsInArray:insertValuesArray];
     self.rowid = db.lastInsertRowId;
     
     if (block) {
@@ -132,7 +151,7 @@
         return NO;
     }
     
-    NSString *where = [NSString stringWithFormat:@"%@='%@'", [self.class DBprimaryKey],[self valueForKey:[self.class DBprimaryKey]]];
+    NSString *where = [NSString stringWithFormat:@"%@='%@'", [self.class ORMDBprimaryKey],[self valueForKey:[self.class ORMDBprimaryKey]]];
     
     BOOL isExists = [self executeIsExistsToDB:where db:db result:block];
     
@@ -179,12 +198,13 @@
             if (relationArray && [relationArray count]) {
                 
                 NSMutableArray *valuesArray = [[NSMutableArray alloc]initWithCapacity:[relationArray count]];
-                NSString *itemType = [[model.class DBArrayProperties] objectForKey:property.name];
+                NSString *itemType = [[model.class ORMDBArrayProperties] objectForKey:property.name];
                 
-                if (itemType) {
-                    if ([NSClassFromString(itemType) DBNeedBeLinked]) {
+                if ([NSClassFromString(itemType) ORMDBNeedBeLinked]) {
+                    
+                    if (itemType) {
                         
-                        NSString *primeKey = [NSClassFromString(itemType) DBprimaryKey];
+                        NSString *primeKey = [NSClassFromString(itemType) ORMDBprimaryKey];
                         
                         for (NSObject *relationModel in relationArray){
                             
@@ -196,12 +216,15 @@
                         }
                     }
                     else{
-                        valuesArray = [relationArray mutableCopy];
+                        NSLog(@"warning：协议中的函数+(NSDictionary *)DBArrayProperties缺失NSArray中的类型...");
                     }
+                    
                 }
                 else{
-                    NSLog(@"warning：协议中的函数+(NSDictionary *)DBArrayProperties缺失NSArray中的类型...");
+                    valuesArray = [relationArray mutableCopy];
                 }
+                
+                
                 
                 NSData *objSerialize = nil;
                 if (valuesArray && [valuesArray count] > 0) {
@@ -222,7 +245,7 @@
         }
         else if (property.relationType == RelationType_link) {
             id relationClass = NSClassFromString(property.orignType);
-            NSString *primeKey = [relationClass DBprimaryKey];
+            NSString *primeKey = [relationClass ORMDBprimaryKey];
             id relationModel = [model valueForKey:property.name];
             
             if (relationModel) {
@@ -303,12 +326,13 @@
             if (relationArray && [relationArray count]) {
                 
                 NSMutableArray *valuesArray = [[NSMutableArray alloc]initWithCapacity:[relationArray count]];
-                NSString *itemType = [[model.class DBArrayProperties] objectForKey:property.name];
+                NSString *itemType = [[model.class ORMDBArrayProperties] objectForKey:property.name];
                 
-                if (itemType) {
-                    if ([NSClassFromString(itemType) DBNeedBeLinked]) {
+                if ([NSClassFromString(itemType) ORMDBNeedBeLinked]) {
+                    
+                    if (itemType) {
                         
-                        NSString *primeKey = [NSClassFromString(itemType) DBprimaryKey];
+                        NSString *primeKey = [NSClassFromString(itemType) ORMDBprimaryKey];
                         
                         for (NSObject *relationModel in relationArray){
                             
@@ -320,8 +344,12 @@
                         }
                     }
                     else{
-                        valuesArray = [relationArray mutableCopy];
+                        NSLog(@"warning：协议中的函数+(NSDictionary *)DBArrayProperties缺失NSArray中的类型...");
                     }
+                    
+                }
+                else{
+                    valuesArray = [relationArray mutableCopy];
                 }
                 
                 NSData *objSerialize = nil;
@@ -344,7 +372,7 @@
         else if (property.relationType == RelationType_link) {
             
             id relationClass = NSClassFromString(property.orignType);
-            NSString *primeKey = [relationClass DBprimaryKey];
+            NSString *primeKey = [relationClass ORMDBprimaryKey];
             id relationModel = [model valueForKey:property.name];
             
             if (relationModel) {
@@ -406,7 +434,7 @@
 {
     if (model) {
         
-        [model insertUpdateToDB:^(BOOL isSuccess) {
+        [model insertToDBFinished:^(BOOL isSuccess) {
             
             if (isSuccess) {
                 NSLog(@"link relation Tale insertToDB isSuccess");

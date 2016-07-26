@@ -6,6 +6,10 @@
 //  Copyright © 2016年 com.tencent.prince. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error  does not support Objective-C Automatic Reference Counting (ARC)
+#endif
+
 #import "NSObject+ModelToDictionary.h"
 #import "DBProperty.h"
 #import "NSObject+DBPropertys.h"
@@ -65,7 +69,7 @@
 - (id)idFromObject:(nonnull id)object
 {
     if ([object isKindOfClass:[NSArray class]]) {
-        if (object != nil && [object count] > 0) {
+        if (object != nil && [(NSArray*)object count] > 0) {
             NSMutableArray *array = [NSMutableArray array];
             for (id obj in object) {
                 // 基本类型直接添加
@@ -102,9 +106,9 @@
         }
     }
     else if ([object isKindOfClass:[NSDictionary class]]) {
-        if (object && [[object allKeys] count] > 0) {
+        if (object && [[(NSDictionary*)object allKeys] count] > 0) {
             NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-            for (NSString *key in [object allKeys]) {
+            for (NSString *key in [(NSDictionary*)object allKeys]) {
                 // 基本类型直接添加
                 if ([object[key] isKindOfClass:[NSNumber class]]
                     || [object[key] isKindOfClass:[NSString class]]

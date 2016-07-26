@@ -6,7 +6,7 @@
 //  Copyright © 2016年 com.tencent.prince. All rights reserved.
 //
 
-#import <FMDB/FMDB.h>
+#import "FMDatabaseQueue.h"
 
 typedef enum
 {
@@ -15,9 +15,10 @@ typedef enum
     
 }OperationType;
 
-@interface DBDatabaseQueue : FMDatabaseQueue
+typedef void (^FMDBblock)(FMDatabase *);
 
-- (void)inDatabase:(OperationType)type block:(void (^)(FMDatabase *db))block;
+@interface DBDatabaseQueue : FMDatabaseQueue
+@property(nonatomic,readonly)FMDatabase *fmdb;
 
 #pragma mark - Async
 /**
@@ -25,16 +26,13 @@ typedef enum
  *
  *  @param block block
  */
-- (void)inDatabaseAsync:(void (^)(FMDatabase *db))block;
+- (void)inDatabaseAsync:(FMDBblock)block;
 
-#pragma mark - Sync
 /**
- *  同步操作,在当前线程里面执行(后台执行)
+ *  同步操作,在线程里面执行
  *
  *  @param block block
  */
-- (void)inDatabaseSync:(void (^)(FMDatabase *db))block;
-
-@property(nonatomic,readonly)FMDatabase *database;
+- (void)inDatabaseSync:(FMDBblock)block;
 
 @end

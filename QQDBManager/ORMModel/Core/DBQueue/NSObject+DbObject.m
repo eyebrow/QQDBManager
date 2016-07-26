@@ -6,6 +6,10 @@
 //  Copyright © 2016年 com.tencent.prince. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error  does not support Objective-C Automatic Reference Counting (ARC)
+#endif
+
 #import "NSObject+DbObject.h"
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
@@ -76,8 +80,11 @@ static char *kRowidKey;
     }
     else if ([columeType isEqualToString:@"UIImage"]) {
         NSString* filename = [set stringForColumn:columeName];
-        if ([QQFileHandler isFileExists:[QQFileHandler getPathForDocuments:filename inDir:@"dbImages"]]) {
-            UIImage *img = [UIImage imageWithContentsOfFile:[QQFileHandler getPathForDocuments:filename inDir:@"dbImages"]];
+        
+        NSString *path = [ORMModelDataBaseDir stringByAppendingPathComponent:@"dbImages"];
+        
+        if ([QQFileHandler isFileExists:[QQFileHandler getPathForDocuments:filename inDir:path]]) {
+            UIImage *img = [UIImage imageWithContentsOfFile:[QQFileHandler getPathForDocuments:filename inDir:path]];
             [model setValue:img forKey:propertyName];
         }
     }
@@ -87,8 +94,9 @@ static char *kRowidKey;
     }
     else if ([columeType isEqualToString:@"NSData"]) {
         NSString *filename = [set stringForColumn:columeName];
-        if ([QQFileHandler isFileExists:[QQFileHandler getPathForDocuments:filename inDir:@"dbData"]]) {
-            NSData* data = [NSData dataWithContentsOfFile:[QQFileHandler getPathForDocuments:filename inDir:@"dbData"]];
+        NSString *path = [ORMModelDataBaseDir stringByAppendingPathComponent:@"dbdata"];
+        if ([QQFileHandler isFileExists:[QQFileHandler getPathForDocuments:filename inDir:path]]) {
+            NSData* data = [NSData dataWithContentsOfFile:[QQFileHandler getPathForDocuments:filename inDir:path]];
             [model setValue:data forKey:propertyName];
         }
     }
@@ -118,13 +126,15 @@ static char *kRowidKey;
     if ([value isKindOfClass:[UIImage class]])
     {
         NSString *filename = [NSString stringWithFormat:@"img%f",[date timeIntervalSince1970]];
-        [UIImageJPEGRepresentation(value, 1) writeToFile:[QQFileHandler getPathForDocuments:filename inDir:@"dbImages"] atomically:YES];
+        NSString *path = [ORMModelDataBaseDir stringByAppendingPathComponent:@"dbImages"];
+        [UIImageJPEGRepresentation(value, 1) writeToFile:[QQFileHandler getPathForDocuments:filename inDir:path] atomically:YES];
         value = filename;
     }
     else if ([value isKindOfClass:[NSData class]])
     {
         NSString *filename = [NSString stringWithFormat:@"data%f",[date timeIntervalSince1970]];
-        [value writeToFile:[QQFileHandler getPathForDocuments:filename inDir:@"dbdata"] atomically:YES];
+        NSString *path = [ORMModelDataBaseDir stringByAppendingPathComponent:@"dbdata"];
+        [value writeToFile:[QQFileHandler getPathForDocuments:filename inDir:path] atomically:YES];
         value = filename;
     }
     else if ([value isKindOfClass:[NSDate class]])

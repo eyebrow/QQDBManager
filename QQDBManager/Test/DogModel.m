@@ -7,7 +7,7 @@
 //
 
 #import "DogModel.h"
-#import "DBModel.h"
+#import "ORMModel.h"
 
 @implementation DogModel
 
@@ -24,12 +24,12 @@
 //    return result;
 //}
 
-+(NSString *)DBtableName
++(NSString *)ORMDBTableName
 {
     return @"DogTable";
 }
 
-+(NSString *)DBprimaryKey
++(NSString *)ORMDBprimaryKey
 {
     return @"number";
 }

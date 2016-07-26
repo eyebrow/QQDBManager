@@ -7,7 +7,7 @@
 //
 
 #import "PersonModel.h"
-#import "DBModel.h"
+#import "ORMModel.h"
 #import "DogModel.h"
 
 @implementation PersonModel
@@ -33,17 +33,17 @@
 //    return result;
 //}
 
-+(NSString *)DBtableName
++(NSString *)ORMDBTableName
 {
     return @"PersonTable";
 }
 
-+(NSString *)DBprimaryKey
++(NSString *)ORMDBprimaryKey
 {
     return @"uin";
 }
 
-+(NSDictionary *)DBArrayProperties
++(NSDictionary *)ORMDBArrayProperties
 {
     NSMutableDictionary *dict = [NSMutableDictionary new];
     

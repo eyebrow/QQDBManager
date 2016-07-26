@@ -6,10 +6,14 @@
 //  Copyright © 2016年 com.tencent.prince. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error  does not support Objective-C Automatic Reference Counting (ARC)
+#endif
+
 #import "NSObject+DBSearch.h"
 #import "NSObject+DBProtocol.h"
 #import "NSString+DBModel.h"
-#import <FMDB/FMDB.h>
+#import "FMDatabase.h"
 #import "DBProperty.h"
 #import "DBDatabaseQueue.h"
 #import "NSObject+DbObject.h"
@@ -17,6 +21,49 @@
 #import "FMDatabaseQueue.h"
 
 @implementation NSObject (DBSearch)
+
+#pragma mark -- Search All
++ (NSArray *)searchAll
+{
+    return [self searchTable:self.DBtableName Where:nil orderBy:nil offset:0 count:0];
+}
+
++ (NSArray *)searchAllWhere:(NSString *)where
+{
+    return [self searchTable:self.DBtableName Where:where orderBy:nil offset:0 count:0];
+}
+
++(NSArray *)searchAllInTable:(NSString *)tableName
+{
+    return [self searchTable:tableName Where:nil orderBy:nil offset:0 count:0];
+}
+
++(NSArray *)searchAllInTable:(NSString *)tableName Where:(NSString *)where
+{
+    return [self searchTable:tableName Where:where orderBy:nil offset:0 count:0];
+}
+
+#pragma mark -- Private Mothod
++ (NSArray *)searchTable:(NSString *)tableName Where:(NSString *)where orderBy:(NSString *)orderBy offset:(int)offset count:(int)count
+{
+    __block NSArray* results = nil;
+    
+    [self.class.dbQueue inDatabaseSync:^(FMDatabase *db) {
+        
+        NSMutableString *searchSQL = [NSMutableString stringWithFormat:@"SELECT * FROM %@ ", tableName];
+        if (where != nil && ![where isEmptyWithTrim]) {
+            [searchSQL appendFormat:@"WHERE %@ ",where];
+        }
+        NSString *tmpStr = [self SQLString:searchSQL AddOder:orderBy offset:offset count:count];
+        FMResultSet *set =[db executeQuery:tmpStr];
+        
+        results = [self executeResult:set];
+        [set close];
+        
+    }];
+    
+    return results;
+}
 
 #pragma mark Search All
 + (void)searchAll:(DBResults)block {
@@ -39,6 +86,7 @@
         FMResultSet *set =[db executeQuery:searchSQL];
         
         [self executeResult:set block:block];
+        [set close];
     }];
 }
 
@@ -70,15 +118,15 @@
                 
                 [self setValueWithModel:model set:set columeName:property.name propertyName:property.name columeType:property.orignType];
                 
-                NSString *itemType = [[model.class DBArrayProperties] objectForKey:property.name];
+                NSString *itemType = [[model.class ORMDBArrayProperties] objectForKey:property.name];
                 id relationClass = NSClassFromString(itemType);
                 
-                if ([relationClass DBNeedBeLinked]){
+                if ([relationClass ORMDBNeedBeLinked]){
                     NSArray *tmpList = [model valueForKey:property.name];
                     
                     if (tmpList && [tmpList count] > 0) {
                         NSMutableArray *itemList = [[NSMutableArray alloc]initWithCapacity:[tmpList count]];
-                        NSString *primeKey = [relationClass DBprimaryKey];
+                        NSString *primeKey = [relationClass ORMDBprimaryKey];
                         
                         for (id item in tmpList) {
                             id itemModel = [relationClass new];
@@ -96,7 +144,7 @@
             }
             else if (property.relationType == RelationType_link) {
                 id relationClass = NSClassFromString(property.orignType);
-                NSString *primeKey = [relationClass DBprimaryKey];
+                NSString *primeKey = [relationClass ORMDBprimaryKey];
                 NSObject *relationModel = [model valueForKey:property.name];
                 
                 DBProperty *relationProperty = nil;
@@ -160,7 +208,7 @@
 
 + (id)executeRelationShipTableSearch:(NSObject *)model
 {
-    NSString *where = [NSString stringWithFormat:@"%@='%@'", [model.class DBprimaryKey],[model valueForKey:[model.class DBprimaryKey]]];
+    NSString *where = [NSString stringWithFormat:@"%@='%@'", [model.class ORMDBprimaryKey],[model valueForKey:[model.class ORMDBprimaryKey]]];
     
     NSMutableString *searchSQL = [NSMutableString stringWithFormat:@"SELECT * FROM %@ ", model.class.DBtableName];
     if (where != nil && ![where isEmptyWithTrim]) {
@@ -168,10 +216,12 @@
     }
     [model.class SQLString:searchSQL AddOder:nil offset:0 count:0];
     
-    FMDatabase *db = self.dbQueue.database;
-    FMResultSet *set =[db executeQuery:searchSQL];
+    __block NSArray *array = nil;
+    [self.dbQueue inDatabaseSync:^(FMDatabase *db) {
+        FMResultSet *set =[db executeQuery:searchSQL];
+        array = [model.class executeResult:set];
+    }];
     
-    NSArray *array = [model.class executeResult:set];
     
     if (array && array.count > 0) {
         return [array firstObject];
@@ -187,16 +237,18 @@
  *  @param offset  offset
  *  @param count   count
  */
-+ (void)SQLString:(NSMutableString *)SQL AddOder:(NSString *)orderby offset:(int)offset count:(int)count
++ (NSString *)SQLString:(NSMutableString *)SQL AddOder:(NSString *)orderby offset:(int)offset count:(int)count
 {
     if (!SQL || !count) {
-        return ;
+        return SQL;
     }
     
     if (orderby != nil && ![orderby isEmptyWithTrim]) {
         [SQL appendFormat:@"ORDER BY %@ ",orderby];
     }
     [SQL appendFormat:@"LIMIT %d OFFSET %d ",count, offset];
+    
+    return SQL;
 }
 
 @end

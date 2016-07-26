@@ -6,6 +6,10 @@
 //  Copyright © 2016年 com.tencent.prince. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error  does not support Objective-C Automatic Reference Counting (ARC)
+#endif
+
 #import "DBProperty.h"
 #import "DBDefine.h"
 #import "NSObject+DBProtocol.h"
@@ -76,7 +80,7 @@
     else {
         type = @"NSString";
     }
-    return type;
+    return [type copy];
 }
 
 
@@ -150,7 +154,7 @@
         [NSClassFromString(_orignType) loadProtypes];
         _relationProperty =  NSClassFromString(_orignType).propertys;
         
-        if ([NSClassFromString(_orignType) DBNeedBeLinked]) {
+        if ([NSClassFromString(_orignType) ORMDBNeedBeLinked]) {
             
             _relationType = RelationType_link;
         }
@@ -175,7 +179,7 @@
         const char *cName = property_getName(property);
         // 转换为Objective C 字符串
         NSString *name = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
-        if ([name isEqualToString:[NSClassFromString(clsStr) DBprimaryKey]]) {
+        if ([name isEqualToString:[NSClassFromString(clsStr) ORMDBprimaryKey]]) {
             return property;
         }
     }

@@ -6,6 +6,10 @@
 //  Copyright © 2016年 com.tencent.prince. All rights reserved.
 //
 
+#if !__has_feature(objc_arc)
+#error  does not support Objective-C Automatic Reference Counting (ARC)
+#endif
+
 #import "NSObject+Coding.h"
 #import "DBProperty.h"
 #import "NSObject+DBPropertys.h"
